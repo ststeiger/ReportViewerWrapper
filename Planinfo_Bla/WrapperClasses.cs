@@ -222,15 +222,17 @@ namespace COR_Reports
         }
 
 
-        public byte[] Render(string FormatInfo)
+        public byte[] Render(ReportFormatInfo formatInfo)
         {
             Microsoft.Reporting.WebForms.Warning[] warnings;
             string[] streamids;
             string mimeType;
             string encoding;
             string extension;
+            string deviceinfo = "";
 
-            return this.m_Viewer.LocalReport.Render(FormatInfo, "", out mimeType, out encoding, out extension, out streamids, out warnings);
+
+            return this.m_Viewer.LocalReport.Render(formatInfo.FormatName, formatInfo.DeviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
         }
         
 

@@ -96,7 +96,7 @@ namespace COR_Reports
 
                 rep = null;
 
-                baReport = viewer.Render(formatInfo.FormatName);
+                baReport = viewer.Render(formatInfo);
             } // End Using MyReportViewer
 
             return baReport;

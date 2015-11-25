@@ -34,7 +34,8 @@ namespace Planinfo_Bla
         public static byte[] GetFooterPDF(string report, string in_aperturedwg, string in_stylizer)
         {
             byte[] baReport = null;
-            COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.PDF);
+            //COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.PDF);
+            COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.Html);
 
             try
             {
@@ -64,7 +65,7 @@ namespace Planinfo_Bla
                     rds.Name = "DATA_Planinfo"; //This refers to the dataset name in the RDLC file
                     string strSQL = COR_Reports.ReportTools.GetDataSetDefinition(doc, rds.Name);
                     strSQL = strSQL.Replace("@in_aperturedwg", "'" + in_aperturedwg.Replace("'", "''") + "'");
-                    strSQL = strSQL.Replace("@in_aperturedwg", "'" + in_stylizer.Replace("'", "''") + "'");
+                    strSQL = strSQL.Replace("@in_stylizer", "'" + in_stylizer.Replace("'", "''") + "'");
 
                     rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
                     strSQL = null;
