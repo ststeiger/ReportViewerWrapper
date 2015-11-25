@@ -22,7 +22,11 @@
             font-size: 11px;
         }
 
-        #oReportCell { width: 100%; }
+        #oReportCell 
+        { 
+            width: 100%; 
+            padding: 2mm;
+        }
 
         td
         {
