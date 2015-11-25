@@ -7,6 +7,7 @@ namespace COR_Reports
     {
         PDF
        ,Excel
+       ,Image
        ,Html
        ,HtmlFragment
        ,Unknown = 666
@@ -67,6 +68,12 @@ namespace COR_Reports
                     //               You can use this setting to specify a root path for the images in a report (for example, http://<servername>/resources/companyimages).
                     // <StreamRoot>/ReportServer/Resources</StreamRoot>
                     this.DeviceInfo = @"<DeviceInfo><HTMLFragment>True</HTMLFragment><JavaScript>false</JavaScript><StyleStream>true</StyleStream></DeviceInfo>";
+                    break;
+                case ExportFormat.Image:
+                    this.Extension = ".tif";
+                    this.FormatName = "IMAGE";
+                    this.Mime = "image/tiff";
+                    this.Format = ExportFormat.PDF;
                     break;
                 default:
                     this.Extension = ".pdf";
