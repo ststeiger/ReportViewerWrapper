@@ -23,7 +23,6 @@ namespace Planinfo_Bla
 
             string report = "Planinfo_StadtZuerich.rdl";
             
-
             COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.PDF);
             return GetFooter(report, formatInfo, in_aperturedwg, in_stylizer);
         } // End Sub GetFooterPDF 
@@ -100,11 +99,16 @@ namespace Planinfo_Bla
                 throw;
             }
 
-            using (System.IO.FileStream fs = System.IO.File.Create(@"D:\" + System.IO.Path.GetFileNameWithoutExtension(report) + formatInfo.Extension))
-            {
-                fs.Write(baReport, 0, baReport.Length);
-            } // End Using fs
 
+            // If testing
+            if (System.StringComparer.InvariantCultureIgnoreCase.Equals(System.Environment.UserDomainName, "COR"))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(@"D:\" + System.IO.Path.GetFileNameWithoutExtension(report) + formatInfo.Extension))
+                {
+                    fs.Write(baReport, 0, baReport.Length);
+                } // End Using fs
+            }
+            
             return baReport;
         } // End Sub GetFooterPDF 
 
