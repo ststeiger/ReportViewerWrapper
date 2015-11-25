@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Libs\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="Libs\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
     <Content Include="Libs\Microsoft.ReportViewer.WebForms.dll" />
     <Content Include="Libs\System.Web.DataVisualization.dll" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -87,7 +89,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Planinfo.rdl" />
+    <EmbeddedResource Include="Planinfo_StadtZuerich.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
