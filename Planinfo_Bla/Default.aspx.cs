@@ -10,9 +10,12 @@ namespace Planinfo_Bla
         protected void Page_Load(object sender, System.EventArgs e)
         {
             // DependencyWalker.ViewDependencies();
+
+            // GetPDF();
+            // GetFooterPDF();
             this.litContent.Text = GetFooterHtmlFragment();
         } // End Sub Page_Load 
-        
+
 
         public static byte[] GetFooterPDF()
         {
@@ -47,6 +50,8 @@ namespace Planinfo_Bla
         }
 
 
+
+
         // D:\reportviewerz\2005
         // Depends on TFS://COR-Library\COR_Reports\COR_Reports.csproj
         // Pre: No value is NULL 
@@ -54,7 +59,7 @@ namespace Planinfo_Bla
         public static byte[] GetFooter(string report, COR_Reports.ReportFormatInfo formatInfo, string in_aperturedwg, string in_stylizer)
         {
             byte[] baReport = null;
-            
+
             try
             {
                 COR_Reports.ReportTools.ReportDataCallback_t myFunc = delegate(COR_Reports.ReportViewer viewer, System.Xml.XmlDocument doc)
@@ -95,7 +100,7 @@ namespace Planinfo_Bla
             }
             catch (System.Exception ex)
             {
-                Log(ex);
+                Basic_SQL.SQL.Log(ex);
                 throw;
             }
 
@@ -108,15 +113,64 @@ namespace Planinfo_Bla
                     fs.Write(baReport, 0, baReport.Length);
                 } // End Using fs
             }
-            
+
             return baReport;
         } // End Sub GetFooterPDF 
 
 
-        private static void Log(System.Exception ex)
+        public static byte[] GetPDF()
         {
-            System.Console.WriteLine(ex);
-        } // End Sub Log 
+            string report = "Report2.rdl";
+
+            COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.PDF);
+            return GetReport2(report, formatInfo);
+        } // End Sub GetFooterPDF 
+
+
+        // D:\reportviewerz\2005
+        // Depends on TFS://COR-Library\COR_Reports\COR_Reports.csproj
+        // Pre: No value is NULL 
+        // Post: output report bytes
+        public static byte[] GetReport2(string report, COR_Reports.ReportFormatInfo formatInfo)
+        {
+            byte[] baReport = null;
+
+            try
+            {
+                COR_Reports.ReportTools.ReportDataCallback_t myFunc = delegate(COR_Reports.ReportViewer viewer, System.Xml.XmlDocument doc)
+                {
+                    // Add data sources
+                    COR_Reports.ReportDataSource rds = new COR_Reports.ReportDataSource();
+                    rds.Name = "DataSet1"; //This refers to the dataset name in the RDLC file
+                    string strSQL = COR_Reports.ReportTools.GetDataSetDefinition(doc, rds.Name);
+                    
+
+                    rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
+                    strSQL = null;
+                    viewer.DataSources.Add(rds);
+                };
+
+                baReport = COR_Reports.ReportTools.RenderReport(report, formatInfo, myFunc);
+
+            }
+            catch (System.Exception ex)
+            {
+                Basic_SQL.SQL.Log(ex);
+                throw;
+            }
+
+
+            // If testing
+            if (System.StringComparer.InvariantCultureIgnoreCase.Equals(System.Environment.UserDomainName, "COR"))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(@"D:\" + System.IO.Path.GetFileNameWithoutExtension(report) + formatInfo.Extension))
+                {
+                    fs.Write(baReport, 0, baReport.Length);
+                } // End Using fs
+            }
+
+            return baReport;
+        } // End Sub GetFooterPDF 
 
 
     } // End Class _Default 

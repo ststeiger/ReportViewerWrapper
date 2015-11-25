@@ -93,6 +93,7 @@ namespace COR_Reports
             this.m_Viewer = new Microsoft.Reporting.WebForms.ReportViewer();
             this.DataSources = new cDataSource(this.m_Viewer);
             this.EnableFormat("HTML4.0");
+            this.EnableFormat("IMAGE");
         }
 
 

@@ -90,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Planinfo_StadtZuerich.rdl" />
+    <EmbeddedResource Include="Report2.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

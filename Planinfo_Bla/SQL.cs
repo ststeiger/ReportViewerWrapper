@@ -68,5 +68,13 @@ namespace Basic_SQL
         }
 
 
+        public static void Log(System.Exception ex)
+        {
+            System.Console.WriteLine(ex);
+        } // End Sub Log 
+
+
     }
+
+
 }
