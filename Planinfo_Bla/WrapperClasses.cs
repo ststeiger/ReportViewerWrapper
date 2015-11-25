@@ -229,10 +229,9 @@ namespace COR_Reports
             string mimeType;
             string encoding;
             string extension;
-            string deviceinfo = "";
 
-
-            return this.m_Viewer.LocalReport.Render(formatInfo.FormatName, formatInfo.DeviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
+            byte[] result =  this.m_Viewer.LocalReport.Render(formatInfo.FormatName, formatInfo.DeviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
+            return result;
         }
         
 

@@ -8,6 +8,7 @@ namespace COR_Reports
         PDF
        ,Excel
        ,Html
+       ,HtmlFragment
        ,Unknown = 666
     } // End enum ExportFormat
 
@@ -42,6 +43,12 @@ namespace COR_Reports
                     this.Format = pFormat;
                     break;
                 case ExportFormat.Html:
+                    this.Extension = ".htm";
+                    this.FormatName = "HTML4.0";
+                    this.Mime = "text/html";
+                    this.Format = pFormat;
+                    break;
+                case ExportFormat.HtmlFragment:
                     this.Extension = ".htm";
                     this.FormatName = "HTML4.0";
                     this.Mime = "text/html";
