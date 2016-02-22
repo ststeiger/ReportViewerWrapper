@@ -1,0 +1,756 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="HBD_CAFM_V3">
+      <rd:DataSourceID>e0fd47dc-9282-47d3-8fdc-439e4b78ac36</rd:DataSourceID>
+      <DataSourceReference>HBD_CAFM_V3</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <ReportParameters>
+    <ReportParameter Name="in_aperturedwg">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>G00234-EZ00_0000</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Aperture DWG Name (without .dwg)</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="in_stylizer">
+      <DataType>String</DataType>
+      <DefaultValue>
+        <Values>
+          <Value>REM Bodenbelag</Value>
+        </Values>
+      </DefaultValue>
+      <Prompt>Stylizer</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <rd:ReportID>45d00603-5c27-4cba-916b-d92f55124d31</rd:ReportID>
+  <PageWidth>6.5cm</PageWidth>
+  <DataSets>
+    <DataSet Name="DATA_Planinfo">
+      <Fields>
+        <Field Name="SO_UID">
+          <DataField>SO_UID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="SO_Nr">
+          <DataField>SO_Nr</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="SO_Bezeichnung">
+          <DataField>SO_Bezeichnung</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="SO_Prfx">
+          <DataField>SO_Prfx</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GB_Nr">
+          <DataField>GB_Nr</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="GB_Bezeichnung">
+          <DataField>GB_Bezeichnung</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GS_Nr">
+          <DataField>GS_Nr</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GS_Bezeichnung">
+          <DataField>GS_Bezeichnung</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GS_IsAussengeschoss">
+          <DataField>GS_IsAussengeschoss</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="GSST_UID">
+          <DataField>GSST_UID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="GST_Kurz_DE">
+          <DataField>GST_Kurz_DE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GST_Kurz_FR">
+          <DataField>GST_Kurz_FR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GST_Kurz_IT">
+          <DataField>GST_Kurz_IT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GST_Kurz_EN">
+          <DataField>GST_Kurz_EN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GST_Lang_DE">
+          <DataField>GST_Lang_DE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GST_Lang_FR">
+          <DataField>GST_Lang_FR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GST_Lang_IT">
+          <DataField>GST_Lang_IT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="GST_Lang_EN">
+          <DataField>GST_Lang_EN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZO_SODWG_ApertureDWG">
+          <DataField>ZO_SODWG_ApertureDWG</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZO_SODWG_ApertureObjID">
+          <DataField>ZO_SODWG_ApertureObjID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZO_GBDWG_ApertureDWG">
+          <DataField>ZO_GBDWG_ApertureDWG</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZO_GBDWG_ApertureObjID">
+          <DataField>ZO_GBDWG_ApertureObjID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZO_GSDWG_ApertureDWG">
+          <DataField>ZO_GSDWG_ApertureDWG</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZO_GSDWG_ApertureObjID">
+          <DataField>ZO_GSDWG_ApertureObjID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ZO_GSFlaeche_Flaeche">
+          <DataField>ZO_GSFlaeche_Flaeche</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="RPT_SO_DisplayText">
+          <DataField>RPT_SO_DisplayText</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RPT_GB_DisplayText">
+          <DataField>RPT_GB_DisplayText</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RPT_PLZ_Ort">
+          <DataField>RPT_PLZ_Ort</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RPT_OBJ_DWG">
+          <DataField>RPT_OBJ_DWG</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RPT_Strasse">
+          <DataField>RPT_Strasse</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RPT_GueltigVon">
+          <DataField>RPT_GueltigVon</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="RPT_GueltigBis">
+          <DataField>RPT_GueltigBis</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>HBD_CAFM_V3</DataSourceName>
+        <CommandText>-- SELECT SO_ApertureDWG FROM T_Standort -- S0541_0000
+-- SELECT GBI_ApertureDWG FROM T_GebaeudeIMMO -- S0550_0000
+-- SELECT GSS_ApertureDWG FROM T_Geschoss -- G00886-UG01_0000
+
+
+-- DECLARE @in_aperturedwg varchar(50) 
+-- SET @in_aperturedwg = 'G00020-OG02_0000' 
+-- SET @in_aperturedwg = 'S0691_0000' 
+-- SET @in_aperturedwg = 'G00234-EZ00_0000' 
+
+
+-- DECLARE @in_stylizer nvarchar(200) 
+-- -- SET @in_stylizer = N'REM Bodenbelag' 
+-- -- -- SET @in_stylizer = N'' 
+-- -- -- SET @in_stylizer = NULL 
+
+
+SELECT TOP 1 
+	 T_Standort.SO_UID
+	,T_Standort.SO_Nr 
+	,T_Standort.SO_Name AS SO_Bezeichnung
+	,T_Standort.SO_Prfx
+	
+	--,T_Standort.SO_IsSchnittstelleWP
+	
+	--,T_AP_Ref_Freigabetyp.FGT_UID
+	--,T_AP_Ref_Freigabetyp.FGT_Code
+
+	--,T_AP_Ref_Freigabetyp.FGT_Kurz_DE
+	--,T_AP_Ref_Freigabetyp.FGT_Kurz_FR
+	--,T_AP_Ref_Freigabetyp.FGT_Kurz_IT
+	--,T_AP_Ref_Freigabetyp.FGT_Kurz_EN
+
+	--,T_AP_Ref_Freigabetyp.FGT_Lang_DE
+	--,T_AP_Ref_Freigabetyp.FGT_Lang_FR
+	--,T_AP_Ref_Freigabetyp.FGT_Lang_IT
+	--,T_AP_Ref_Freigabetyp.FGT_Lang_EN
+	
+	
+	,T_GebaeudeIMMO.GBI_Nr AS GB_Nr 
+	,T_GebaeudeIMMO.GBI_Name  AS GB_Bezeichnung 
+	
+	
+	,T_Geschoss.GSS_Nr AS GS_Nr 
+	,T_Geschoss.GSS_Bezeichnung AS GS_Bezeichnung 
+	,T_Geschoss.GSS_IsAGF AS GS_IsAussengeschoss 
+	,T_Ref_Geschosstyp.GSST_UID 
+	
+	,T_Ref_Geschosstyp.GSST_Kurz AS GST_Kurz_DE 
+	,T_Ref_Geschosstyp.GSST_Kurz AS GST_Kurz_FR 
+	,T_Ref_Geschosstyp.GSST_Kurz AS GST_Kurz_IT 
+	,T_Ref_Geschosstyp.GSST_Kurz AS GST_Kurz_EN 
+
+	,T_Ref_Geschosstyp.GSST_Lang AS GST_Lang_DE
+	,T_Ref_Geschosstyp.GSST_Lang AS GST_Lang_FR
+	,T_Ref_Geschosstyp.GSST_Lang AS GST_Lang_IT
+	,T_Ref_Geschosstyp.GSST_Lang AS GST_Lang_EN
+	
+	
+	,T_Standort.SO_ApertureDWG AS ZO_SODWG_ApertureDWG
+	,T_Standort.SO_ObjectID AS ZO_SODWG_ApertureObjID
+	
+	,T_GebaeudeIMMO.GBI_ApertureDWG AS ZO_GBDWG_ApertureDWG 
+	,T_GebaeudeIMMO.GBI_ObjectID AS ZO_GBDWG_ApertureObjID
+
+	,T_Geschoss.GSS_ApertureDWG AS ZO_GSDWG_ApertureDWG 
+	,T_Geschoss.GSS_ObjectID AS ZO_GSDWG_ApertureObjID 
+	
+	,T_Geschoss.GSS_FlaecheGraphisch AS ZO_GSFlaeche_Flaeche 
+	
+	,SO_Prfx + RIGHT('0000' + CAST(T_Standort.SO_Nr AS varchar(10)), 4) AS RPT_SO_DisplayText 
+	,GBI_Prfx + RIGHT('0000' + CAST(T_GebaeudeIMMO.GBI_Nr AS varchar(10)), 4) AS RPT_GB_DisplayText 
+	,ISNULL(T_GebaeudeIMMO.GBI_PlzCAFM + ' ', '') + T_GebaeudeIMMO.GBI_OrtCAFM AS RPT_PLZ_Ort 
+	
+	,COALESCE(T_Geschoss.GSS_ApertureDWG, T_GebaeudeIMMO.GBI_ApertureDWG, T_Standort.SO_ApertureDWG) + '.dwg' AS RPT_OBJ_DWG 
+	,T_GebaeudeIMMO.GBI_StrasseCAFM + ISNULL(' ' + T_GebaeudeIMMO.GBI_HausnrCAFM, '') AS RPT_Strasse 
+	 
+	,ZO_RMRSP_GueltigVon AS RPT_GueltigVon 
+	,ZO_RMRSP_GueltigBis AS RPT_GueltigBis 
+FROM T_Standort 
+
+--LEFT JOIN T_AP_Ref_Freigabetyp 
+--	ON T_AP_Ref_Freigabetyp.FGT_Code = T_Standort.SO_IsSchnittstelleWP 
+--	AND T_AP_Ref_Freigabetyp.FGT_Status = 1 
+
+LEFT JOIN T_GebaeudeIMMO 
+	ON T_GebaeudeIMMO.GBI_SO_UID = T_Standort.SO_UID 
+	AND T_GebaeudeIMMO.GBI_Status = 1 
+	AND CONVERT(char(8), {fn now()}, 112) BETWEEN CONVERT(char(8), T_GebaeudeIMMO.GBI_DatumVon, 112) AND T_GebaeudeIMMO.GBI_DatumBis 
+	
+LEFT JOIN T_Geschoss 
+	ON T_Geschoss.GSS_GBI_UID = T_GebaeudeIMMO.GBI_UID 
+	AND T_Geschoss.GSS_Status = 1 
+	AND CONVERT(char(8), {fn now()}, 112) BETWEEN CONVERT(char(8), T_Geschoss.GSS_DatumVon, 112) AND T_Geschoss.GSS_DatumBis 
+	AND EXISTS(SELECT GSS_UID FROM T_Geschoss WHERE GSS_ApertureDWG = @in_aperturedwg) 
+	
+LEFT JOIN T_Ref_Geschosstyp 
+	ON T_Ref_Geschosstyp.GSST_UID = T_Geschoss.GSS_GSST_UID 
+	AND T_Ref_Geschosstyp.GSST_Status = 1 
+	
+LEFT JOIN T_ZO_AP_SHOW_Geschoss_Reinigungsplanung 
+	ON T_ZO_AP_SHOW_Geschoss_Reinigungsplanung.ZO_GSSRSP_GSS_UID = T_Geschoss.GSS_UID 
+	AND SUBSTRING(@in_stylizer, 1, 3) = 'REM' 
+	
+LEFT JOIN T_ZO_REM_AP_Standort_Planung 
+	ON T_ZO_REM_AP_Standort_Planung.ZO_RMRSP_Nr = T_ZO_AP_SHOW_Geschoss_Reinigungsplanung.ZO_GSSRSP_REMSP_Nr 
+	AND T_ZO_REM_AP_Standort_Planung.ZO_RMRSP_Status = 1 
+	
+WHERE (1=1) 
+AND T_Standort.SO_Status = 1 
+AND CONVERT(char(8), {fn now()}, 112) BETWEEN CONVERT(char(8), T_Standort.SO_DatumVon, 112) AND T_Standort.SO_DatumBis 
+AND 
+( 
+	T_Geschoss.GSS_ApertureDWG = @in_aperturedwg 
+	OR 
+	T_GebaeudeIMMO.GBI_ApertureDWG = @in_aperturedwg 
+	OR 
+	T_Standort.SO_ApertureDWG = @in_aperturedwg 
+) 
+
+ORDER BY GSS_IsAGF</CommandText>
+        <QueryParameters>
+          <QueryParameter Name="@in_aperturedwg">
+            <Value>=Parameters!in_aperturedwg.Value</Value>
+          </QueryParameter>
+          <QueryParameter Name="@in_stylizer">
+            <Value>=Parameters!in_stylizer.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <Timeout>300</Timeout>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code />
+  <Width>6.5cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Table Name="table1">
+        <DataSetName>DATA_Planinfo</DataSetName>
+        <Header>
+          <TableRows>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox1">
+                      <rd:DefaultName>textbox1</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>=iif(First(Fields!GS_Bezeichnung.Value) = Nothing, "Bold", "Normal")</FontWeight>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>18</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!RPT_SO_DisplayText.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox2">
+                      <rd:DefaultName>textbox2</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>=iif(First(Fields!GS_Bezeichnung.Value) = Nothing, "Bold", "Normal")</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>17</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!SO_Bezeichnung.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+            <TableRow>
+              <Visibility>
+                <Hidden>=iif(First(Fields!GS_Bezeichnung.Value) = Nothing, true, false)</Hidden>
+              </Visibility>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="BE_ID">
+                      <rd:DefaultName>BE_ID</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>16</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!RPT_GB_DisplayText.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox6">
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>15</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!GB_Bezeichnung.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+            <TableRow>
+              <Visibility>
+                <Hidden>=iif(First(Fields!GS_Bezeichnung.Value) = Nothing, true, false)</Hidden>
+              </Visibility>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>3</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="GS_Bezeichnung">
+                      <rd:DefaultName>GS_Bezeichnung</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>700</FontWeight>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>14</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!GS_Bezeichnung.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>3</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="RPT_Strasse">
+                      <rd:DefaultName>RPT_Strasse</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>13</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!RPT_Strasse.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>3</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="RPT_PLZ_Ort">
+                      <rd:DefaultName>RPT_PLZ_Ort</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>12</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=First(Fields!RPT_PLZ_Ort.Value)</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+            <TableRow>
+              <Visibility>
+                <Hidden>=iif(Fields!RPT_GueltigVon.Value Is Nothing Or Fields!RPT_GueltigBis.Value Is Nothing, true, false)</Hidden>
+              </Visibility>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox7">
+                      <rd:DefaultName>textbox7</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>11</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox8">
+                      <rd:DefaultName>textbox8</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>10</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox9">
+                      <rd:DefaultName>textbox9</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>9</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.27646cm</Height>
+            </TableRow>
+            <TableRow>
+              <Visibility>
+                <Hidden>=iif(Fields!RPT_GueltigVon.Value Is Nothing Or Fields!RPT_GueltigBis.Value Is Nothing, true, false)</Hidden>
+              </Visibility>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox10">
+                      <rd:DefaultName>textbox10</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>8</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Gültig vom:</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox12">
+                      <rd:DefaultName>textbox12</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <Format>d</Format>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>7</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!RPT_GueltigVon.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+            <TableRow>
+              <Visibility>
+                <Hidden>=iif(Fields!RPT_GueltigVon.Value Is Nothing Or Fields!RPT_GueltigBis.Value Is Nothing, true, false)</Hidden>
+              </Visibility>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox3">
+                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>6</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Gültig bis:</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox5">
+                      <rd:DefaultName>textbox5</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <Format>d</Format>
+                        <TextAlign>Left</TextAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>5</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>=Fields!RPT_GueltigBis.Value</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox20">
+                      <rd:DefaultName>textbox20</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>4</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox21">
+                      <rd:DefaultName>textbox21</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>3</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox22">
+                      <rd:DefaultName>textbox22</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>2</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value />
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.25cm</Height>
+            </TableRow>
+            <TableRow>
+              <TableCells>
+                <TableCell>
+                  <ColSpan>2</ColSpan>
+                  <ReportItems>
+                    <Textbox Name="textbox17">
+                      <rd:DefaultName>textbox17</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <ZIndex>1</ZIndex>
+                      <CanGrow>true</CanGrow>
+                      <Value>Druckdatum</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+                <TableCell>
+                  <ReportItems>
+                    <Textbox Name="textbox19">
+                      <rd:DefaultName>textbox19</rd:DefaultName>
+                      <Style>
+                        <FontFamily>Trebuchet MS</FontFamily>
+                        <FontSize>8pt</FontSize>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                      <CanGrow>true</CanGrow>
+                      <Value>=System.DateTime.Now.ToString("dd.MM.yyyy")</Value>
+                    </Textbox>
+                  </ReportItems>
+                </TableCell>
+              </TableCells>
+              <Height>0.45cm</Height>
+            </TableRow>
+          </TableRows>
+        </Header>
+        <TableColumns>
+          <TableColumn>
+            <Width>1.5cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>0.75cm</Width>
+          </TableColumn>
+          <TableColumn>
+            <Width>4.25cm</Width>
+          </TableColumn>
+        </TableColumns>
+      </Table>
+    </ReportItems>
+    <Height>4.12645cm</Height>
+  </Body>
+  <Language>de-DE</Language>
+  <PageHeight>4.5cm</PageHeight>
+</Report>
