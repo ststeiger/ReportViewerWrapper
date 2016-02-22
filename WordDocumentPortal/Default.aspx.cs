@@ -4,10 +4,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 namespace WordDocumentPortal
 {
+
+
     public partial class _Default : System.Web.UI.Page
     {
+
 
         protected void Page_Load(object sender, System.EventArgs e)
         {
@@ -34,9 +38,8 @@ namespace WordDocumentPortal
 
             // byte[] foot = GetFooter(report, formatInfo, in_aperturedwg, in_stylizer);
             
-
             byte[] foot = GetUmzugsmitteilung("UM_Umzugsmitteilung.rdl", formatInfo, "C38CB749-1EEC-4686-9BBA-F627B9C4E8EC", "DE");
-            System.IO.File.WriteAllBytes(@"d:\foo" + formatInfo.Extension, foot);
+            // System.IO.File.WriteAllBytes(@"d:\Test_UM_Umzugsmitteilung" + formatInfo.Extension, foot);
 
             return foot;
         } // End Sub GetFooterPDF 
@@ -58,7 +61,7 @@ namespace WordDocumentPortal
                 retVal = System.Text.Encoding.UTF8.GetString(baReport);
 
             return retVal;
-        }
+        } // End Sub GetFooterHtmlFragment 
 
 
 
@@ -126,11 +129,7 @@ namespace WordDocumentPortal
                         viewer.DataSources.Add(rdsTranslation);
                     }
 
-
-
-
-
-                };
+                }; // End Sub ReportDataCallback_t 
 
                 baReport = COR_Reports.ReportTools.RenderReport(report, formatInfo, myFunc);
 
@@ -152,8 +151,7 @@ namespace WordDocumentPortal
             }
 
             return baReport;
-        } // End Sub GetFooterPDF 
-
+        } // End Sub GetUmzugsmitteilung 
 
 
 
@@ -198,7 +196,7 @@ namespace WordDocumentPortal
                     rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
                     strSQL = null;
                     viewer.DataSources.Add(rds);
-                };
+                }; // End Sub ReportDataCallback_t 
 
                 baReport = COR_Reports.ReportTools.RenderReport(report, formatInfo, myFunc);
 
@@ -220,7 +218,7 @@ namespace WordDocumentPortal
             }
 
             return baReport;
-        } // End Sub GetFooterPDF 
+        } // End Sub GetFooter 
 
 
         public static byte[] GetPDF()
@@ -253,7 +251,7 @@ namespace WordDocumentPortal
                     rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
                     strSQL = null;
                     viewer.DataSources.Add(rds);
-                };
+                }; // End Sub ReportDataCallback_t 
 
                 baReport = COR_Reports.ReportTools.RenderReport(report, formatInfo, myFunc);
 
@@ -275,9 +273,10 @@ namespace WordDocumentPortal
             }
 
             return baReport;
-        } // End Sub GetFooterPDF 
+        } // End Sub GetReport2 
 
 
+    } // End partial class _Default : System.Web.UI.Page
 
-    }
-}
+
+} // End Namespace WordDocumentPortal

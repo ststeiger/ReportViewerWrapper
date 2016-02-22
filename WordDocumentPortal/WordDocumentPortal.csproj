@@ -41,23 +41,27 @@
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ReportViewer\2014\Microsoft.ReportViewer.Common.dll</HintPath>
+      <HintPath>Libs\ReportViewer\2012\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ReportViewer\2014\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
+      <HintPath>Libs\ReportViewer\2012\Microsoft.ReportViewer.DataVisualization.DLL</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ReportViewer\2014\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <HintPath>Libs\ReportViewer\2012\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ReportViewer\2014\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <HintPath>Libs\ReportViewer\2012\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ReportViewer\2014\Microsoft.SqlServer.Types.dll</HintPath>
+      <HintPath>Libs\ReportViewer\2012\Microsoft.SqlServer.Types.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -78,14 +82,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.ReportViewer.Common.dll" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.ReportViewer.DataVisualization.DLL" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.ReportViewer.Design.DLL" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.ReportViewer.ProcessingObjectModel.DLL" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.ReportViewer.WebDesign.DLL" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.ReportViewer.WebForms.DLL" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.ReportViewer.WinForms.DLL" />
-    <Content Include="Libs\ReportViewer\2014\Microsoft.SqlServer.Types.dll" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.Common.dll" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.DataVisualization.DLL" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.Design.DLL" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.ProcessingObjectModel.DLL" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.WebDesign.DLL" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.WebForms.DLL" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.WinForms.DLL" />
+    <None Include="Libs\ReportViewer\2012\Microsoft.SqlServer.Types.dll" />
     <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

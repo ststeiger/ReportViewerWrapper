@@ -47,7 +47,7 @@ namespace Planinfo_Bla
                 retVal = System.Text.Encoding.UTF8.GetString(baReport);
 
             return retVal;
-        }
+        } // End Sub GetFooterHtmlFragment 
 
 
 
@@ -93,7 +93,7 @@ namespace Planinfo_Bla
                     rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
                     strSQL = null;
                     viewer.DataSources.Add(rds);
-                };
+                }; // End Sub ReportDataCallback_t 
 
                 baReport = COR_Reports.ReportTools.RenderReport(report, formatInfo, myFunc);
 
@@ -115,7 +115,7 @@ namespace Planinfo_Bla
             }
 
             return baReport;
-        } // End Sub GetFooterPDF 
+        } // End Sub GetFooter 
 
 
         public static byte[] GetPDF()
@@ -124,7 +124,7 @@ namespace Planinfo_Bla
 
             COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.PDF);
             return GetReport2(report, formatInfo);
-        } // End Sub GetFooterPDF 
+        } // End Sub GetPDF 
 
 
         // D:\reportviewerz\2005
@@ -148,7 +148,7 @@ namespace Planinfo_Bla
                     rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
                     strSQL = null;
                     viewer.DataSources.Add(rds);
-                };
+                }; // End Sub ReportDataCallback_t 
 
                 baReport = COR_Reports.ReportTools.RenderReport(report, formatInfo, myFunc);
 
@@ -170,7 +170,7 @@ namespace Planinfo_Bla
             }
 
             return baReport;
-        } // End Sub GetFooterPDF 
+        } // End Sub GetReport2 
 
 
     } // End Class _Default 
