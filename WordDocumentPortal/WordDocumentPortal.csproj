@@ -39,6 +39,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportingServices.ImageRendering, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ImageRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportingServices.ProcessingCore, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ProcessingCore.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\ReportViewer\2012\Microsoft.ReportViewer.Common.dll</HintPath>

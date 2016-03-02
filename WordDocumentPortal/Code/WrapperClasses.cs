@@ -109,14 +109,12 @@ namespace COR_Reports
         {
             const System.Reflection.BindingFlags Flags = System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance;
 
+            System.Type tt = this.m_Viewer.LocalReport.GetType();
+            System.Reflection.FieldInfo m_previewService = tt.GetField("m_previewService", Flags);
 
-            System.Reflection.FieldInfo m_previewService = this.m_Viewer.LocalReport.GetType().GetField
-            (
-                "m_previewService",
-                Flags
-            );
-
-
+            if (m_previewService == null)
+                m_previewService = tt.GetField("m_processingHost", Flags);
+            
             // Works only for v2005
             if (m_previewService != null)
             {
@@ -132,11 +130,29 @@ namespace COR_Reports
 
                 System.Collections.IList extensions = ListRenderingExtensions.Invoke(previewServiceInstance, null) as System.Collections.IList;
 
-                System.Reflection.PropertyInfo name = extensions[0].GetType().GetProperty("Name", Flags);
+                System.Reflection.PropertyInfo name = null;
+                if(extensions.Count > 0)
+                    name = extensions[0].GetType().GetProperty("Name", Flags);
+
+                if (name == null)
+                    return;
 
                 foreach (object extension in extensions)
                 {
-                    if (string.Compare(name.GetValue(extension, null).ToString(), formatName, true) == 0)
+                    string thisFormat = name.GetValue(extension, null).ToString();
+
+                    //{ 
+                    //    System.Reflection.FieldInfo m_isVisible = extension.GetType().GetField("m_isVisible", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    //    System.Reflection.FieldInfo m_isExposedExternally = extension.GetType().GetField("m_isExposedExternally", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                    //    object valVisible = m_isVisible.GetValue(extension);
+                    //    object valExposed = m_isExposedExternally.GetValue(extension);
+                    //    System.Console.WriteLine(valVisible);
+                    //    System.Console.WriteLine(valExposed);
+                    //}
+
+                    //if (string.Compare(thisFormat, formatName, true) == 0)
+                    if(true)
                     {
                         System.Reflection.FieldInfo m_isVisible = extension.GetType().GetField("m_isVisible", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                         System.Reflection.FieldInfo m_isExposedExternally = extension.GetType().GetField("m_isExposedExternally", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
