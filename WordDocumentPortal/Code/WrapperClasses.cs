@@ -18,10 +18,12 @@ namespace COR_Reports
         public ReportDataSource()
         { }
 
+
         public ReportDataSource(string pName)
         {
             this.Name = pName;
         }
+
 
         public ReportDataSource(string pName, object dataSourceValue)
             : this(pName)
@@ -29,11 +31,13 @@ namespace COR_Reports
             this.Value = dataSourceValue;
         }
 
+
         public ReportDataSource(string pName, string pDataSourceId)
             : this(pName)
         {
             this.DataSourceId = pDataSourceId;
         }
+
 
     } // End Class ReportDataSource 
 
@@ -48,6 +52,7 @@ namespace COR_Reports
 
         public ReportParameter()
         { }
+
 
         public ReportParameter(string pName)
         {
@@ -73,11 +78,13 @@ namespace COR_Reports
             this.Visible = pVisible;
         }
 
+
         public ReportParameter(string pName, string[] pValues, bool pVisible)
             : this(pName, pValues)
         {
             this.Visible = pVisible;
         }
+
 
     } // End Class ReportParameter
 
@@ -158,6 +165,7 @@ namespace COR_Reports
 
         }
 
+
         public void SetParameters(System.Collections.Generic.List<ReportParameter> lsParameters)
         {
             SetParameters(lsParameters.ToArray());
@@ -204,10 +212,12 @@ namespace COR_Reports
 
         public string ReportPath
         {
-            get{
+            get
+            {
                 return this.m_Viewer.LocalReport.ReportPath;
             }
-            set{
+            set
+            {
                 this.m_Viewer.LocalReport.ReportPath = value;
             }
         }
@@ -217,6 +227,7 @@ namespace COR_Reports
         {
             this.m_Viewer.LocalReport.LoadReportDefinition(report);
         }
+
 
         public void LoadReportDefinition(System.IO.TextReader report)
         {
@@ -246,12 +257,12 @@ namespace COR_Reports
         }
         
 
-
         public void Dispose()
         {
             Dispose(true);
             System.GC.SuppressFinalize(this);
         }
+
 
         protected virtual void Dispose(bool disposing)
         {
@@ -266,7 +277,8 @@ namespace COR_Reports
             // free native resources if there are any.
         }
 
-    } // End Class 
+
+    } // End Class ReportViewer
 
 
 } // End Namespace COR_Reports
