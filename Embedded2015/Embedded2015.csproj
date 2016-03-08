@@ -85,6 +85,7 @@
     <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WebDesign.DLL" />
     <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WebForms.DLL" />
     <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WinForms.DLL" />
+    <Content Include="Rotate270Text.htm" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
