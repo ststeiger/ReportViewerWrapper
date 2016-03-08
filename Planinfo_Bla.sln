@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planinfo_Bla", "Planinfo_Bl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordDocumentPortal", "WordDocumentPortal\WordDocumentPortal.csproj", "{090E5B1E-9BCE-4669-89DB-C26D04A5D967}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2015", "Embedded2015\Embedded2015.csproj", "{509A4E14-9FC7-4902-A525-22C1B7D444FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{090E5B1E-9BCE-4669-89DB-C26D04A5D967}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{090E5B1E-9BCE-4669-89DB-C26D04A5D967}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{090E5B1E-9BCE-4669-89DB-C26D04A5D967}.Release|Any CPU.Build.0 = Release|Any CPU
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

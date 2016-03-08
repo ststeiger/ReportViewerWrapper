@@ -21,6 +21,9 @@ namespace Basic_SQL
             csb.DataSource = "CORDB2008R2";
             csb.InitialCatalog = "Roomplanning";
 
+            // csb.DataSource = "cordb2014";
+            // csb.InitialCatalog = "ReportServer";
+
 
             csb.IntegratedSecurity = true;
 
@@ -31,6 +34,28 @@ namespace Basic_SQL
             }
 
             return dt;
+        }
+
+
+        // DataSource must point to SQL-Server for <Microsoft.SqlServer.Types.dll-Version needed>
+        public static void GetSqlServerTypesDll(string path)
+        {
+            System.Data.DataTable dt = Basic_SQL.SQL.GetDataTable(@"
+SELECT 
+	 af.name,
+	 af.content 
+FROM sys.assemblies a
+INNER JOIN sys.assembly_files af ON a.assembly_id = af.assembly_id 
+WHERE a.name = 'Microsoft.SqlServer.Types'     
+    
+");
+
+            if (path != null && !path.ToLowerInvariant().EndsWith(".dll"))
+                path = System.IO.Path.Combine(path, "Microsoft.SqlServer.Types.dll");
+
+
+            byte[] ba = (byte[])dt.Rows[0]["content"];
+            System.IO.File.WriteAllBytes(path, ba);
         }
 
 
