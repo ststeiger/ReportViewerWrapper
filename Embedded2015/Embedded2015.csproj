@@ -77,14 +77,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.SqlServer.Types.dll" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.Common.dll" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.DataVisualization.DLL" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.Design.DLL" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.ProcessingObjectModel.DLL" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WebDesign.DLL" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WebForms.DLL" />
-    <Content Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WinForms.DLL" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.SqlServer.Types.dll" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.Common.dll" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.DataVisualization.DLL" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.Design.DLL" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.ProcessingObjectModel.DLL" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WebDesign.DLL" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WebForms.DLL" />
+    <None Include="Libs\ReportViewer\2015\Microsoft.ReportViewer.WinForms.DLL" />
     <Content Include="Rotate270Text.htm" />
     <Content Include="Web.config" />
   </ItemGroup>

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2015", "Embedded2015\Embedded2015.csproj", "{509A4E14-9FC7-4902-A525-22C1B7D444FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2005", "Embedded2005\Embedded2005.csproj", "{AD7274A2-CAA7-49C2-BF71-82B26B2EA490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2012", "Embedded2012\Embedded2012.csproj", "{A133C943-1BA5-46DB-9C2D-E384D7E6777D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{509A4E14-9FC7-4902-A525-22C1B7D444FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD7274A2-CAA7-49C2-BF71-82B26B2EA490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7274A2-CAA7-49C2-BF71-82B26B2EA490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7274A2-CAA7-49C2-BF71-82B26B2EA490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7274A2-CAA7-49C2-BF71-82B26B2EA490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A133C943-1BA5-46DB-9C2D-E384D7E6777D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A133C943-1BA5-46DB-9C2D-E384D7E6777D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A133C943-1BA5-46DB-9C2D-E384D7E6777D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A133C943-1BA5-46DB-9C2D-E384D7E6777D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

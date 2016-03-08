@@ -7,7 +7,7 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace Planinfo_Bla {
+namespace Embedded2012 {
     
     
     public partial class _Default {

@@ -1,5 +1,5 @@
 ﻿
-namespace Planinfo_Bla
+namespace Embedded2005
 {
 
 
@@ -25,7 +25,7 @@ namespace Planinfo_Bla
             in_aperturedwg = "G00020-OG02_0000";
 
             string report = "Planinfo_StadtZuerich.rdl";
-            
+
             COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.PDF);
             return GetFooter(report, formatInfo, in_aperturedwg, in_stylizer);
         } // End Sub GetFooterPDF 
@@ -40,10 +40,10 @@ namespace Planinfo_Bla
             in_aperturedwg = "G00020-OG02_0000";
 
             string report = "Planinfo_StadtZuerich.rdl";
-            
+
             COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.HtmlFragment);
             byte[] baReport = GetFooter(report, formatInfo, in_aperturedwg, in_stylizer);
-            if(baReport != null)
+            if (baReport != null)
                 retVal = System.Text.Encoding.UTF8.GetString(baReport);
 
             return retVal;
@@ -143,7 +143,7 @@ namespace Planinfo_Bla
                     COR_Reports.ReportDataSource rds = new COR_Reports.ReportDataSource();
                     rds.Name = "DataSet1"; //This refers to the dataset name in the RDLC file
                     string strSQL = COR_Reports.ReportTools.GetDataSetDefinition(doc, rds.Name);
-                    
+
 
                     rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
                     strSQL = null;
@@ -176,4 +176,4 @@ namespace Planinfo_Bla
     } // End Class _Default 
 
 
-} // End Namespace Planinfo_Bla 
+} // End Namespace Embedded2005 

@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{090E5B1E-9BCE-4669-89DB-C26D04A5D967}</ProjectGuid>
+    <ProjectGuid>{A133C943-1BA5-46DB-9C2D-E384D7E6777D}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WordDocumentPortal</RootNamespace>
-    <AssemblyName>WordDocumentPortal</AssemblyName>
+    <RootNamespace>Embedded2012</RootNamespace>
+    <AssemblyName>Embedded2012</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -39,14 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportingServices.ImageRendering, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ImageRendering.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportingServices.ProcessingCore, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ProcessingCore.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libs\ReportViewer\2012\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -101,6 +93,7 @@
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ExcelRendering.dll" />
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.HtmlRendering.dll" />
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ImageRendering.dll" />
+    <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.Interfaces.dll" />
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.NullRendering.dll" />
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ProcessingCore.dll" />
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.ProcessingObjectModel.dll" />
@@ -111,16 +104,17 @@
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.SPBProcessing.dll" />
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.WebMap.dll" />
     <None Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.WordRendering.dll" />
-    <Content Include="Libs\ReportViewer\2012\ReportServer2012\Microsoft.ReportingServices.Interfaces.dll" />
-    <Content Include="Scripts\jquery-1.7.1.intellisense.js" />
-    <Content Include="Scripts\jquery-1.7.1.js" />
-    <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="custext.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Code\DependencyWalker.cs" />
+    <Compile Include="Code\ReportFormatInfo.cs" />
+    <Compile Include="Code\ReportRepository.cs" />
+    <Compile Include="Code\ReportTools.cs" />
+    <Compile Include="Code\SQL.cs" />
+    <Compile Include="Code\WrapperClasses.cs" />
+    <Compile Include="Code\XmlTools.cs" />
+    <Compile Include="custext.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -128,17 +122,11 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Code\DependencyWalker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Code\ReportFormatInfo.cs" />
-    <Compile Include="Code\ReportRepository.cs" />
-    <Compile Include="Code\ReportTools.cs" />
-    <Compile Include="Code\SQL.cs" />
-    <Compile Include="Code\WrapperClasses.cs" />
-    <Compile Include="Code\XmlTools.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Planinfo_StadtZuerich.rdl" />
@@ -164,9 +152,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>60877</DevelopmentServerPort>
+          <DevelopmentServerPort>58047</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:60877/</IISUrl>
+          <IISUrl>http://localhost:58047/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

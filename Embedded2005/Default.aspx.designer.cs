@@ -7,7 +7,7 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace WordDocumentPortal {
+namespace Embedded2005 {
     
     
     public partial class _Default {

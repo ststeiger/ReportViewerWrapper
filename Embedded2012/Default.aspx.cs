@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-
-namespace WordDocumentPortal
+﻿
+namespace Embedded2012
 {
 
 
     public partial class _Default : System.Web.UI.Page
     {
 
-
         protected void Page_Load(object sender, System.EventArgs e)
         {
             // FSCK ! Microsoft.SqlServer.Types Version 11 ! 
             // COR_Reports.DependencyWalker.ViewDependencies();
-            
+
             // GetPDF();
             GetFooterPDF();
             // this.litContent.Text = GetFooterHtmlFragment();
@@ -37,7 +30,7 @@ namespace WordDocumentPortal
             COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.WordOpenXml);
 
             // byte[] foot = GetFooter(report, formatInfo, in_aperturedwg, in_stylizer);
-            
+
             byte[] foot = GetUmzugsmitteilung("UM_Umzugsmitteilung.rdl", formatInfo, "C38CB749-1EEC-4686-9BBA-F627B9C4E8EC", "DE");
             // System.IO.File.WriteAllBytes(@"d:\Test_UM_Umzugsmitteilung" + formatInfo.Extension, foot);
 
@@ -65,7 +58,7 @@ namespace WordDocumentPortal
 
 
 
-        
+
         // Pre: No value is NULL 
         // Post: output report bytes
         public static byte[] GetUmzugsmitteilung(string report, COR_Reports.ReportFormatInfo formatInfo, string in_ump_uid, string in_sprache)
@@ -108,7 +101,7 @@ namespace WordDocumentPortal
                         viewer.DataSources.Add(rds);
                     }
 
-                    
+
                     {
                         COR_Reports.ReportDataSource rdsHeader = new COR_Reports.ReportDataSource();
                         rdsHeader.Name = "DATA_Umzugsheader"; //This refers to the dataset name in the RDLC file
@@ -279,4 +272,4 @@ namespace WordDocumentPortal
     } // End partial class _Default : System.Web.UI.Page
 
 
-} // End Namespace WordDocumentPortal
+} // End Namespace Embedded2012
