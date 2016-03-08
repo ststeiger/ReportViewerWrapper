@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    <style type="text/css" media="all">
+
+        .col
+        {
+            background-color: black;
+            width: 40px;
+            vertical-align: bottom;
+            position: relative;
+        }
+
+        .hdr
+        {
+            transform: rotate(270deg);
+            transform-origin: left top 0;
+            #height: 40px;
+            line-height: 40px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            position: absolute;
+            padding-left: 2mm;
+            padding-right: 2mm;
+        }
+
+
+        .lol
+        {
+            display: inline-block;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            padding-bottom: 2mm;
+            padding-left: 2mm;
+            padding-right: 2mm;
+        }
+
+
+        table
+        {
+            border-collapse: collapse;
+        }
+
+    </style>
+
+
+    <!--
+    Yea, JavaScript for layout, position absolute, adding a dependency to jQuery for 3 lines of code, and having to define width at 2 places, which means I have the choice between adding either less or SASS as dependency. Exactly the kind of thing that I don't want. But since it works, and there's no better solution, looks like I have to consider doing it this way. I'll give you +1 for finding a position absolute hack, but I still don't like it, because position absolute will just mean trouble later, when having to put further elemens into the header that should be relatively positioned.
+    -->
+
+
+    <!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    -->
+</head>
+<body>
+
+    <h1>This is a test</h1>
+
+
+    <table>
+        <tr>
+            <td class="col"><span class="lol">Rights</span></td>
+            <td class="col"><span class="hdr">Test</span></td>
+            <td class="col"><span class="hdr">Test 2</span></td>
+            <td class="col"><span class="hdr">Objektübersicht</span></td>
+            <td class="col"><span class="hdr">Test3</span></td>
+        </tr>
+        <tr>
+            <td>a</td>
+            <td>ab</td>
+            <td>abc</td>
+            <td>abcd</td>
+            <td>abcdefghijkl</td>
+        </tr>
+    </table>
+
+
+    <script type="text/javascript">
+        
+        /*
+        // Find the column label with the tallest height
+        var maxH = 0;
+
+        $(".hdr").each(function(i, item) {
+            var bbox = $(item).get(0).getBoundingClientRect();
+            if (bbox.height > maxH) {
+                maxH = bbox.height;
+            }
+        });
+
+        // Make all the label cells that height
+        // $(".col").css('height', maxH + 'px');
+        */
+
+
+        var maxH = 0;
+        // Find the column label with the tallest height
+        var hdrs = document.querySelectorAll(".hdr")
+        for (i = 0; i < hdrs.length; i++)
+        {
+            var bbox = hdrs[i].getBoundingClientRect();
+            if (bbox.height > maxH)
+                maxH = bbox.height;
+        }
+
+
+        // Make all the label cells that height
+        var cols = document.querySelectorAll(".col")
+        for (i = 0; i < cols.length; i++)
+            cols[i].style.height = maxH + "px";
+        
+    </script>
+</body>
+</html>
