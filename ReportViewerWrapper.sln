@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2005", "Embedded200
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2012", "Embedded2012\Embedded2012.csproj", "{A133C943-1BA5-46DB-9C2D-E384D7E6777D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModifiedEmbedded2015", "ModifiedEmbedded2015\ModifiedEmbedded2015.csproj", "{27698FEC-EAD2-46AE-AA98-D25931D4AFAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A133C943-1BA5-46DB-9C2D-E384D7E6777D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A133C943-1BA5-46DB-9C2D-E384D7E6777D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A133C943-1BA5-46DB-9C2D-E384D7E6777D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27698FEC-EAD2-46AE-AA98-D25931D4AFAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27698FEC-EAD2-46AE-AA98-D25931D4AFAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27698FEC-EAD2-46AE-AA98-D25931D4AFAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27698FEC-EAD2-46AE-AA98-D25931D4AFAA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

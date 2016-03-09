@@ -158,7 +158,7 @@ namespace COR_Reports
                         System.Reflection.FieldInfo m_isExposedExternally = extension.GetType().GetField("m_isExposedExternally", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
                         m_isVisible.SetValue(extension, true);
                         m_isExposedExternally.SetValue(extension, true);
-                        break;
+                        //break;
                     }
 
                 } // Next extension

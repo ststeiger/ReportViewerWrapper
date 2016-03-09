@@ -18,10 +18,12 @@ namespace COR_Reports
         public ReportDataSource()
         { }
 
+
         public ReportDataSource(string pName)
         {
             this.Name = pName;
         }
+
 
         public ReportDataSource(string pName, object dataSourceValue)
             : this(pName)
@@ -29,11 +31,13 @@ namespace COR_Reports
             this.Value = dataSourceValue;
         }
 
+
         public ReportDataSource(string pName, string pDataSourceId)
             : this(pName)
         {
             this.DataSourceId = pDataSourceId;
         }
+
 
     } // End Class ReportDataSource 
 
@@ -48,6 +52,7 @@ namespace COR_Reports
 
         public ReportParameter()
         { }
+
 
         public ReportParameter(string pName)
         {
@@ -73,11 +78,13 @@ namespace COR_Reports
             this.Visible = pVisible;
         }
 
+
         public ReportParameter(string pName, string[] pValues, bool pVisible)
             : this(pName, pValues)
         {
             this.Visible = pVisible;
         }
+
 
     } // End Class ReportParameter
 
@@ -102,37 +109,62 @@ namespace COR_Reports
         {
             const System.Reflection.BindingFlags Flags = System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance;
 
+            System.Type tt = this.m_Viewer.LocalReport.GetType();
+            System.Reflection.FieldInfo m_previewService = tt.GetField("m_previewService", Flags);
 
-            System.Reflection.FieldInfo m_previewService = this.m_Viewer.LocalReport.GetType().GetField
-            (
-                "m_previewService",
-                Flags
-            );
+            if (m_previewService == null)
+                m_previewService = tt.GetField("m_processingHost", Flags);
 
-            System.Reflection.MethodInfo ListRenderingExtensions = m_previewService.FieldType.GetMethod
-            (
-                "ListRenderingExtensions",
-                Flags
-            );
-
-            object previewServiceInstance = m_previewService.GetValue(this.m_Viewer.LocalReport);
-
-            System.Collections.IList extensions = ListRenderingExtensions.Invoke(previewServiceInstance, null) as System.Collections.IList;
-
-            System.Reflection.PropertyInfo name = extensions[0].GetType().GetProperty("Name", Flags);
-
-            foreach (object extension in extensions)
+            // Works only for v2005
+            if (m_previewService != null)
             {
-                if (string.Compare(name.GetValue(extension, null).ToString(), formatName, true) == 0)
+
+                System.Reflection.MethodInfo ListRenderingExtensions = m_previewService.FieldType.GetMethod
+                (
+                    "ListRenderingExtensions",
+                    Flags
+                );
+
+
+                object previewServiceInstance = m_previewService.GetValue(this.m_Viewer.LocalReport);
+
+                System.Collections.IList extensions = ListRenderingExtensions.Invoke(previewServiceInstance, null) as System.Collections.IList;
+
+                System.Reflection.PropertyInfo name = null;
+                if (extensions.Count > 0)
+                    name = extensions[0].GetType().GetProperty("Name", Flags);
+
+                if (name == null)
+                    return;
+
+                foreach (object extension in extensions)
                 {
-                    System.Reflection.FieldInfo m_isVisible = extension.GetType().GetField("m_isVisible", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                    System.Reflection.FieldInfo m_isExposedExternally = extension.GetType().GetField("m_isExposedExternally", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-                    m_isVisible.SetValue(extension, true);
-                    m_isExposedExternally.SetValue(extension, true);
-                    break;
-                }
-            }
-        }
+                    string thisFormat = name.GetValue(extension, null).ToString();
+
+                    //{ 
+                    //    System.Reflection.FieldInfo m_isVisible = extension.GetType().GetField("m_isVisible", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                    //    System.Reflection.FieldInfo m_isExposedExternally = extension.GetType().GetField("m_isExposedExternally", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
+                    //    object valVisible = m_isVisible.GetValue(extension);
+                    //    object valExposed = m_isExposedExternally.GetValue(extension);
+                    //    System.Console.WriteLine(valVisible);
+                    //    System.Console.WriteLine(valExposed);
+                    //}
+
+                    if (string.Compare(thisFormat, formatName, true) == 0)
+                    {
+                        System.Reflection.FieldInfo m_isVisible = extension.GetType().GetField("m_isVisible", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                        System.Reflection.FieldInfo m_isExposedExternally = extension.GetType().GetField("m_isExposedExternally", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+                        m_isVisible.SetValue(extension, true);
+                        m_isExposedExternally.SetValue(extension, true);
+                        break;
+                    }
+
+                } // Next extension
+
+            } // End if (m_previewService != null)
+
+        } // End Sub EnableFormat 
 
 
         public string this[string name]
@@ -147,6 +179,7 @@ namespace COR_Reports
             }
 
         }
+
 
         public void SetParameters(System.Collections.Generic.List<ReportParameter> lsParameters)
         {
@@ -194,10 +227,12 @@ namespace COR_Reports
 
         public string ReportPath
         {
-            get{
+            get
+            {
                 return this.m_Viewer.LocalReport.ReportPath;
             }
-            set{
+            set
+            {
                 this.m_Viewer.LocalReport.ReportPath = value;
             }
         }
@@ -207,6 +242,7 @@ namespace COR_Reports
         {
             this.m_Viewer.LocalReport.LoadReportDefinition(report);
         }
+
 
         public void LoadReportDefinition(System.IO.TextReader report)
         {
@@ -231,10 +267,9 @@ namespace COR_Reports
             string encoding;
             string extension;
 
-            byte[] result =  this.m_Viewer.LocalReport.Render(formatInfo.FormatName, formatInfo.DeviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
+            byte[] result = this.m_Viewer.LocalReport.Render(formatInfo.FormatName, formatInfo.DeviceInfo, out mimeType, out encoding, out extension, out streamids, out warnings);
             return result;
         }
-        
 
 
         public void Dispose()
@@ -242,6 +277,7 @@ namespace COR_Reports
             Dispose(true);
             System.GC.SuppressFinalize(this);
         }
+
 
         protected virtual void Dispose(bool disposing)
         {
@@ -256,7 +292,8 @@ namespace COR_Reports
             // free native resources if there are any.
         }
 
-    } // End Class 
+
+    } // End Class ReportViewer
 
 
 } // End Namespace COR_Reports

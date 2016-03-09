@@ -1,0 +1,100 @@
+﻿
+ildasm.exe
+https://msdn.microsoft.com/en-us/library/f7dy01k1(v=vs.100).aspx
+
+ilasm.exe
+https://msdn.microsoft.com/en-us/library/496e4ekx(v=vs.100).aspx
+
+http://blogs.msdn.com/b/thottams/archive/2007/02/01/using-ilasm-and-ildasm.aspx
+
+
+ildasm Microsoft.ReportViewer.WinForms.Modified.dll 
+    /out=Microsoft.ReportViewer.WinForms.Modified.il
+
+ildasm Aspose.Words.ReportingServices.dll 
+    /out=Aspose.Words.ReportingServices.il /unicode
+
+
+http://www.codeproject.com/Articles/23966/Report-Viewer-generate-reports-MS-Word-formats
+
+
+
+ilasm Microsoft.ReportViewer.WinForms.Modified.il /dll
+
+ilasm Aspose.Words.ReportingServices.il /dll
+
+
+
+mklink /j d:\username d:\foo.bar 
+
+
+rd /s /q D:\ilOperations
+
+mkdir D:\ilOperations\DataVisualization\Out
+mkdir D:\ilOperations\ProcessingObjectModel\Out
+mkdir D:\ilOperations\Common\Out
+mkdir D:\ilOperations\WebForms\Out
+
+Microsoft.ReportViewer.DataVisualization.DLL
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\ildasm.exe" "D:\username\Documents\Visual Studio 2013\Projects\ReportViewerWrapper\ModifiedEmbedded2015\Libs\ReportViewer\2015\Microsoft.ReportViewer.DataVisualization.DLL" /out="D:\ilOperations\DataVisualization\Microsoft.ReportViewer.DataVisualization.Modified.il"
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe" "D:\ilOperations\DataVisualization\Microsoft.ReportViewer.DataVisualization.Modified.il" /dll /out="D:\ilOperations\DataVisualization\Out\Microsoft.ReportViewer.DataVisualization.myModified.dll"
+
+
+
+Microsoft.ReportViewer.ProcessingObjectModel.DLL
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\ildasm.exe" "D:\username\Documents\Visual Studio 2013\Projects\ReportViewerWrapper\ModifiedEmbedded2015\Libs\ReportViewer\2015\Microsoft.ReportViewer.ProcessingObjectModel.DLL" /out="D:\ilOperations\ProcessingObjectModel\Microsoft.ReportViewer.ProcessingObjectModel.Modified.il"
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe" "D:\ilOperations\ProcessingObjectModel\Microsoft.ReportViewer.ProcessingObjectModel.Modified.il" /dll /out="D:\ilOperations\ProcessingObjectModel\Out\Microsoft.ReportViewer.ProcessingObjectModel.myModified.dll"
+
+
+
+Microsoft.ReportViewer.Common.dll
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\ildasm.exe" "D:\username\Documents\Visual Studio 2013\Projects\ReportViewerWrapper\ModifiedEmbedded2015\Libs\ReportViewer\2015\Microsoft.ReportViewer.Common.DLL" /out="D:\ilOperations\Common\Microsoft.ReportViewer.Common.Modified.il"
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe" "D:\ilOperations\Common\Microsoft.ReportViewer.Common.Modified.il" /dll /out="D:\ilOperations\Common\Out\Microsoft.ReportViewer.Common.myModified.dll"
+
+
+Microsoft.ReportViewer.WebForms.DLL
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\ildasm.exe" "D:\username\Documents\Visual Studio 2013\Projects\ReportViewerWrapper\ModifiedEmbedded2015\Libs\ReportViewer\2015\Microsoft.ReportViewer.WebForms.DLL" /out="D:\ilOperations\WebForms\Microsoft.ReportViewer.WebForms.Modified.il"
+"C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe" "D:\ilOperations\WebForms\Microsoft.ReportViewer.WebForms.Modified.il" /dll /out="D:\ilOperations\WebForms\Out\Microsoft.ReportViewer.WebForms.myModified.dll"
+
+
+
+
+
+
+// C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\ildasm.exe
+// C:\Program Files (x86)\Microsoft SDKs\Windows\v8.0A\bin\NETFX 4.0 Tools\x64\ildasm.exe
+
+// C:\Windows\Microsoft.NET\Framework\v4.0.30319\ilasm.exe
+// C:\Windows\Microsoft.NET\Framework64\v4.0.30319\ilasm.exe
+
+// C:\Windows\Microsoft.NET\Framework\v2.0.50727\ilasm.exe
+// C:\Windows\Microsoft.NET\Framework64\v2.0.50727\ilasm.exe
+
+
+
+
+ReportViewer.IOSRenderingExtensionBlackList = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+ReportViewer.IOSRenderingExtensionBlackList.Add("ATOM");
+ReportViewer.IOSRenderingExtensionBlackList.Add("CSV");
+ReportViewer.IOSRenderingExtensionBlackList.Add("EXCEL");
+ReportViewer.IOSRenderingExtensionBlackList.Add("EXCELOPENXML");
+ReportViewer.IOSRenderingExtensionBlackList.Add("HTML4.0");
+ReportViewer.IOSRenderingExtensionBlackList.Add("MHTML");
+ReportViewer.IOSRenderingExtensionBlackList.Add("NULL");
+ReportViewer.IOSRenderingExtensionBlackList.Add("RGDI");
+ReportViewer.IOSRenderingExtensionBlackList.Add("RPL");
+ReportViewer.IOSRenderingExtensionBlackList.Add("WORD");
+ReportViewer.IOSRenderingExtensionBlackList.Add("WORDOPENXML");
+ReportViewer.IOSRenderingExtensionBlackList.Add("XML");
+
+
+
+{Name = "Html40RenderingExtension" 
+FullName = "Microsoft.ReportingServices.Rendering.HtmlRenderer.Html40RenderingExtension"}
+
+
+
+namespace Microsoft.ReportingServices.Rendering.HtmlRenderer
+{
+	internal abstract class HTML4Renderer : HTMLWriter
+
