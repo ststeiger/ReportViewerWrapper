@@ -133,6 +133,7 @@
     <EmbeddedResource Include="Planinfo_StadtZuerich.rdl" />
     <EmbeddedResource Include="Report2.rdl" />
     <EmbeddedResource Include="UM_Umzugsmitteilung.rdl" />
+    <EmbeddedResource Include="SimpleLegendenDesign2008.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

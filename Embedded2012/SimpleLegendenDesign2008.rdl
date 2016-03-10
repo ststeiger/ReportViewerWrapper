@@ -8,7 +8,7 @@
             <TablixCornerRow>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox11">
+                  <Textbox Name="Textbox10">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -41,7 +41,7 @@
               </TablixCornerCell>
               <TablixCornerCell>
                 <CellContents>
-                  <Textbox Name="Textbox14">
+                  <Textbox Name="Textbox13">
                     <CanGrow>true</CanGrow>
                     <KeepTogether>true</KeepTogether>
                     <Paragraphs>
@@ -58,72 +58,6 @@
                       </Paragraph>
                     </Paragraphs>
                     <rd:DefaultName>Textbox13</rd:DefaultName>
-                    <Style>
-                      <Border>
-                        <Style>None</Style>
-                      </Border>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                  </Textbox>
-                </CellContents>
-              </TablixCornerCell>
-            </TablixCornerRow>
-            <TablixCornerRow>
-              <TablixCornerCell>
-                <CellContents>
-                  <Textbox Name="Textbox21">
-                    <CanGrow>true</CanGrow>
-                    <KeepTogether>true</KeepTogether>
-                    <Paragraphs>
-                      <Paragraph>
-                        <TextRuns>
-                          <TextRun>
-                            <Value />
-                            <Style>
-                              <FontWeight>Bold</FontWeight>
-                            </Style>
-                          </TextRun>
-                        </TextRuns>
-                        <Style>
-                          <TextAlign>Right</TextAlign>
-                        </Style>
-                      </Paragraph>
-                    </Paragraphs>
-                    <rd:DefaultName>Textbox21</rd:DefaultName>
-                    <Style>
-                      <Border>
-                        <Style>None</Style>
-                      </Border>
-                      <PaddingLeft>2pt</PaddingLeft>
-                      <PaddingRight>2pt</PaddingRight>
-                      <PaddingTop>2pt</PaddingTop>
-                      <PaddingBottom>2pt</PaddingBottom>
-                    </Style>
-                  </Textbox>
-                </CellContents>
-              </TablixCornerCell>
-              <TablixCornerCell>
-                <CellContents>
-                  <Textbox Name="Textbox22">
-                    <CanGrow>true</CanGrow>
-                    <KeepTogether>true</KeepTogether>
-                    <Paragraphs>
-                      <Paragraph>
-                        <TextRuns>
-                          <TextRun>
-                            <Value>Summe</Value>
-                            <Style>
-                              <FontWeight>Bold</FontWeight>
-                            </Style>
-                          </TextRun>
-                        </TextRuns>
-                        <Style />
-                      </Paragraph>
-                    </Paragraphs>
-                    <rd:DefaultName>Textbox22</rd:DefaultName>
                     <Style>
                       <Border>
                         <Style>None</Style>
@@ -200,100 +134,43 @@
                   <Value>=Fields!indicatorname.Value</Value>
                 </SortExpression>
               </SortExpressions>
-              <TablixMembers>
-                <TablixMember>
-                  <Group Name="Group1">
-                    <GroupExpressions>
-                      <GroupExpression>123</GroupExpression>
-                    </GroupExpressions>
-                  </Group>
-                  <SortExpressions>
-                    <SortExpression>
-                      <Value>123</Value>
-                    </SortExpression>
-                  </SortExpressions>
-                  <TablixMembers>
-                    <TablixMember>
-                      <TablixHeader>
-                        <Size>0.23622in</Size>
-                        <CellContents>
-                          <Textbox Name="Textbox6">
-                            <CanGrow>true</CanGrow>
-                            <KeepTogether>true</KeepTogether>
-                            <Paragraphs>
-                              <Paragraph>
-                                <TextRuns>
-                                  <TextRun>
-                                    <Value>=Switch( System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "FR"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_FR.Value, "DATA_LayersetFelder"), System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "IT"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_IT.Value, "DATA_LayersetFelder"), System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "EN"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_EN.Value, "DATA_LayersetFelder"), 1 = 1 ,Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_DE.Value, "DATA_LayersetFelder"))</Value>
-                                    <Style>
-                                      <FontWeight>Bold</FontWeight>
-                                      <Language>de-CH</Language>
-                                    </Style>
-                                  </TextRun>
-                                </TextRuns>
-                                <Style>
-                                  <TextAlign>Right</TextAlign>
-                                </Style>
-                              </Paragraph>
-                            </Paragraphs>
-                            <rd:DefaultName>Textbox6</rd:DefaultName>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="indicatorname">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Switch( System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "FR"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_FR.Value, "DATA_LayersetFelder"), System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "IT"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_IT.Value, "DATA_LayersetFelder"), System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "EN"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_EN.Value, "DATA_LayersetFelder"), 1 = 1 ,Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_DE.Value, "DATA_LayersetFelder"))</Value>
                             <Style>
-                              <Border>
-                                <Style>None</Style>
-                              </Border>
-                              <PaddingLeft>2pt</PaddingLeft>
-                              <PaddingRight>2pt</PaddingRight>
-                              <PaddingTop>2pt</PaddingTop>
-                              <PaddingBottom>2pt</PaddingBottom>
+                              <FontWeight>Bold</FontWeight>
                             </Style>
-                          </Textbox>
-                        </CellContents>
-                      </TablixHeader>
-                      <TablixMembers>
-                        <TablixMember>
-                          <TablixHeader>
-                            <Size>0.23622in</Size>
-                            <CellContents>
-                              <Textbox Name="Textbox23">
-                                <CanGrow>true</CanGrow>
-                                <KeepTogether>true</KeepTogether>
-                                <Paragraphs>
-                                  <Paragraph>
-                                    <TextRuns>
-                                      <TextRun>
-                                        <Value>=Sum(Fields!indicatorvalue.Value)</Value>
-                                        <Style>
-                                          <FontWeight>Bold</FontWeight>
-                                          <Language>de-CH</Language>
-                                        </Style>
-                                      </TextRun>
-                                    </TextRuns>
-                                    <Style>
-                                      <TextAlign>Right</TextAlign>
-                                    </Style>
-                                  </Paragraph>
-                                </Paragraphs>
-                                <rd:DefaultName>Textbox23</rd:DefaultName>
-                                <Style>
-                                  <Border>
-                                    <Style>None</Style>
-                                  </Border>
-                                  <PaddingLeft>2pt</PaddingLeft>
-                                  <PaddingRight>2pt</PaddingRight>
-                                  <PaddingTop>2pt</PaddingTop>
-                                  <PaddingBottom>2pt</PaddingBottom>
-                                </Style>
-                              </Textbox>
-                            </CellContents>
-                          </TablixHeader>
-                          <TablixMembers>
-                            <TablixMember />
-                          </TablixMembers>
-                        </TablixMember>
-                      </TablixMembers>
-                    </TablixMember>
-                  </TablixMembers>
-                </TablixMember>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>indicatorname</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <rd:Selected>true</rd:Selected>
+                </CellContents>
+              </TablixHeader>
+              <TablixMembers>
+                <TablixMember />
               </TablixMembers>
             </TablixMember>
           </TablixMembers>
@@ -393,7 +270,7 @@
         </TablixRowHierarchy>
         <DataSetName>DATA_Legenden</DataSetName>
         <Top>0.00917in</Top>
-        <Height>0.72244in</Height>
+        <Height>0.5in</Height>
         <Width>4.72916in</Width>
         <Style>
           <Border>
@@ -402,7 +279,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.80225cm</Height>
+    <Height>1.29329cm</Height>
     <Style />
   </Body>
   <Width>12.01207cm</Width>
