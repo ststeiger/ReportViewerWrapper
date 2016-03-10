@@ -13,7 +13,11 @@ namespace Embedded2005
 
             // GetPDF();
             // GetFooterPDF();
+            // GetLegends();
+
             this.litContent.Text = GetFooterHtmlFragment();
+
+
         } // End Sub Page_Load 
 
 
@@ -49,6 +53,87 @@ namespace Embedded2005
             return retVal;
         } // End Sub GetFooterHtmlFragment 
 
+
+
+
+
+        public static byte[] GetLegends()
+        {
+            string in_stylizer = "REM Bodenbelag";
+            string in_aperturedwg = "G00020-OG02_0000";
+            in_aperturedwg = "S0691_0000";
+            in_aperturedwg = "G00020-OG02_0000";
+
+            string report = "LegendenDesign.rdl";
+
+            COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.PDF);
+            return GetLegends(report, formatInfo, in_aperturedwg, in_stylizer);
+        } // End Sub GetFooterPDF 
+
+
+        // D:\reportviewerz\2005
+        // Depends on TFS://COR-Library\COR_Reports\COR_Reports.csproj
+        // Pre: No value is NULL 
+        // Post: output report bytes
+        public static byte[] GetLegends(string report, COR_Reports.ReportFormatInfo formatInfo, string in_aperturedwg, string in_stylizer)
+        {
+            byte[] baReport = null;
+
+            try
+            {
+                COR_Reports.ReportTools.ReportDataCallback_t myFunc = delegate(COR_Reports.ReportViewer viewer, System.Xml.XmlDocument doc)
+                {
+                    // viewer["format"] = formatInfo.FormatName;
+                    // viewer["extension"] = formatInfo.Extension;
+                    // viewer["report"] = report;
+
+                    //string extension = viewer["extension"];
+                    ////////////////////////////
+
+                    System.Collections.Generic.List<COR_Reports.ReportParameter> lsParameters =
+                        new System.Collections.Generic.List<COR_Reports.ReportParameter>();
+
+                    // lsParameters.Add(new COR_Reports.ReportParameter("in_aperturedwg", in_aperturedwg));
+                    // lsParameters.Add(new COR_Reports.ReportParameter("in_stylizer", in_stylizer));
+                    
+
+                    // viewer.SetParameters(lsParameters);
+                    lsParameters.Clear();
+                    lsParameters = null;
+
+                    // Add data sources
+                    COR_Reports.ReportDataSource rds = new COR_Reports.ReportDataSource();
+                    rds.Name = "DATA_Legenden"; //This refers to the dataset name in the RDLC file
+                    string strSQL = COR_Reports.ReportTools.GetDataSetDefinition(doc, rds.Name);
+                    strSQL = strSQL.Replace("@in_aperturedwg", "'" + in_aperturedwg.Replace("'", "''") + "'");
+                    strSQL = strSQL.Replace("@in_stylizer", "'" + in_stylizer.Replace("'", "''") + "'");
+
+                    rds.Value = Basic_SQL.SQL.GetDataTable(strSQL);
+                    strSQL = null;
+                    viewer.DataSources.Add(rds);
+                }; // End Sub ReportDataCallback_t 
+
+                baReport = COR_Reports.ReportTools.RenderReport(report, formatInfo, myFunc);
+
+            }
+            catch (System.Exception ex)
+            {
+                Basic_SQL.SQL.Log(ex);
+                throw;
+            }
+
+
+            // If testing
+            if (System.StringComparer.InvariantCultureIgnoreCase.Equals(System.Environment.UserDomainName, "COR"))
+            {
+                using (System.IO.FileStream fs = System.IO.File.Create(@"D:\" + System.IO.Path.GetFileNameWithoutExtension(report) + formatInfo.Extension))
+                {
+                    fs.Write(baReport, 0, baReport.Length);
+                } // End Using fs
+            }
+
+            return baReport;
+        } // End Sub GetLegends 
 
 
 

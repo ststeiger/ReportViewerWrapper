@@ -21,6 +21,11 @@ namespace Basic_SQL
             csb.DataSource = "CORDB2008R2";
             csb.InitialCatalog = "Roomplanning";
 
+
+            // csb.DataSource = @"CORDB2008R2";
+            // csb.InitialCatalog = "COR_Basic_SwissLife";
+
+
             // csb.DataSource = "cordb2014";
             // csb.InitialCatalog = "ReportServer";
 

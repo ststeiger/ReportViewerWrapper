@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Tablix Name="Tablix2">
+        <TablixCorner>
+          <TablixCornerRows>
+            <TablixCornerRow>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox10">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>Nr.</Value>
+                            <Style>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox10</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+              <TablixCornerCell>
+                <CellContents>
+                  <Textbox Name="Textbox13">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value EvaluationMode="Constant">Text</Value>
+                            <Style>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>Textbox13</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixCornerCell>
+            </TablixCornerRow>
+          </TablixCornerRows>
+        </TablixCorner>
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1.15625in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.25in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="indicatorvalue">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!indicatorvalue.Value)</Value>
+                              <Style>
+                                <Format>=Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_NumberFormat.Value, "DATA_LayersetFelder")</Format>
+                                <Language>de-CH</Language>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>indicatorvalue</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="indicatorname">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!indicatorname.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!indicatorname.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>0.25in</Size>
+                <CellContents>
+                  <Textbox Name="indicatorname">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Switch( System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "FR"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_FR.Value, "DATA_LayersetFelder"), System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "IT"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_IT.Value, "DATA_LayersetFelder"), System.StringComparer.InvariantCultureIgnoreCase.Equals(Parameters!in_sprache.Value, "EN"),Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_EN.Value, "DATA_LayersetFelder"), 1 = 1 ,Lookup(Fields!indicatorname.Value, Fields!LYC_WertFeld.Value, Fields!LYC_Titel_DE.Value, "DATA_LayersetFelder"))</Value>
+                            <Style>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
+                          </TextRun>
+                        </TextRuns>
+                        <Style>
+                          <TextAlign>Right</TextAlign>
+                        </Style>
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>indicatorname</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                  <rd:Selected>true</rd:Selected>
+                </CellContents>
+              </TablixHeader>
+              <TablixMembers>
+                <TablixMember />
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="AP_LEG_Nr">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!AP_LEG_Nr.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!AP_LEG_Nr.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixHeader>
+                <Size>0.58333in</Size>
+                <CellContents>
+                  <Textbox Name="AP_LEG_Nr">
+                    <CanGrow>true</CanGrow>
+                    <KeepTogether>true</KeepTogether>
+                    <Paragraphs>
+                      <Paragraph>
+                        <TextRuns>
+                          <TextRun>
+                            <Value>=Fields!AP_LEG_Nr.Value</Value>
+                            <Style />
+                          </TextRun>
+                        </TextRuns>
+                        <Style />
+                      </Paragraph>
+                    </Paragraphs>
+                    <rd:DefaultName>AP_LEG_Nr</rd:DefaultName>
+                    <Style>
+                      <Border>
+                        <Style>None</Style>
+                      </Border>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                    </Style>
+                  </Textbox>
+                </CellContents>
+              </TablixHeader>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Text">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Text.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Text.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <TablixHeader>
+                    <Size>2.98958in</Size>
+                    <CellContents>
+                      <Textbox Name="Text">
+                        <CanGrow>true</CanGrow>
+                        <KeepTogether>true</KeepTogether>
+                        <Paragraphs>
+                          <Paragraph>
+                            <TextRuns>
+                              <TextRun>
+                                <Value>=Fields!Text.Value</Value>
+                                <Style />
+                              </TextRun>
+                            </TextRuns>
+                            <Style />
+                          </Paragraph>
+                        </Paragraphs>
+                        <rd:DefaultName>Text</rd:DefaultName>
+                        <Style>
+                          <Border>
+                            <Style>None</Style>
+                          </Border>
+                          <PaddingLeft>2pt</PaddingLeft>
+                          <PaddingRight>2pt</PaddingRight>
+                          <PaddingTop>2pt</PaddingTop>
+                          <PaddingBottom>2pt</PaddingBottom>
+                        </Style>
+                      </Textbox>
+                    </CellContents>
+                  </TablixHeader>
+                  <TablixMembers>
+                    <TablixMember />
+                  </TablixMembers>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>DATA_Legenden</DataSetName>
+        <Top>0.00917in</Top>
+        <Height>0.5in</Height>
+        <Width>4.72916in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>1.29329cm</Height>
+    <Style />
+  </Body>
+  <Width>12.01207cm</Width>
+  <Page>
+    <PageHeight>27.94cm</PageHeight>
+    <PageWidth>21.59cm</PageWidth>
+    <LeftMargin>1cm</LeftMargin>
+    <RightMargin>1cm</RightMargin>
+    <TopMargin>2cm</TopMargin>
+    <BottomMargin>2cm</BottomMargin>
+    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="COR_Basic">
+      <DataSourceReference>COR_Basic</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>6fdcd8f0-39da-411b-a1ef-64d70e51c127</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DATA_Legenden">
+      <Query>
+        <DataSourceName>COR_Basic</DataSourceName>
+        <CommandText>
+--SELECT * FROM tfu_AP_Legende_OEAP_Zonenplanung(@in_DWG, CURRENT_TIMESTAMP) AS MainView  BY AP_LEG_Nr 
+
+DECLARE @in_ly_uid varchar(36)
+SET @in_ly_uid = '9DA3A612-7115-4D13-A80D-F9F4C005BD64' 
+SET @in_ly_uid = 'C9F17F68-2903-4CF2-8E1B-0F1B9D8900C7' 
+
+
+DECLARE @strDataSource nvarchar(1000)
+DECLARE @strTextSource nvarchar(1000)
+DECLARE @strSourceColumnNames NVARCHAR(MAX) 
+DECLARE @strSourceColumnValues NVARCHAR(MAX) 
+
+
+SET @strDataSource = 
+	(
+		SELECT TOP 1
+			 LY_Legende_View 
+		FROM T_SYS_Ref_Layerset
+		WHERE LY_UID = @in_ly_uid 
+	)
+
+SET @strTextSource = 
+	(
+		SELECT TOP 1 
+			 LY_Legende_TextField 
+		FROM T_SYS_Ref_Layerset 
+		WHERE LY_UID = @in_ly_uid 
+	)
+
+
+SELECT 
+	@strSourceColumnNames = COALESCE(@strSourceColumnNames + ', ', '') + QUOTENAME(LYC_WertFeld) 
+FROM T_SYS_Ref_Layerset_Felder
+WHERE LYC_LY_UID = @in_ly_uid 
+ORDER BY LYC_Sort 
+
+
+SELECT 
+	@strSourceColumnValues = COALESCE(@strSourceColumnValues, N'') + N'		,CAST(' + QUOTENAME(LYC_WertFeld) + N' AS float)  AS ' + QUOTENAME(LYC_WertFeld) + N' '  + CHAR(13) + CHAR(10) 
+FROM T_SYS_Ref_Layerset_Felder
+WHERE LYC_LY_UID = @in_ly_uid 
+ORDER BY LYC_Sort 
+
+
+-- SELECT @strDataSource, @strTextSource, @strSourceColumnNames, @strSourceColumnValues 
+
+
+
+DECLARE @strSQL nvarchar(MAX) 
+SET @strSQL  = N'
+DECLARE @in_DWG varchar(50) 
+SET @in_DWG  = ''0001_gbBC_EG00_0000'' 
+
+
+SELECT 
+	  unpiv.AP_LEG_Nr 
+	--,unpiv.AP_LEG_Mandant 
+	--,unpiv.AP_LEG_DWG 
+	 
+	,unpiv.[Text] 
+	 
+	,unpiv.AP_LEG_Pattern 
+	,unpiv.AP_LEG_ForeColor
+	
+	,''#'' + ISNULL(ForegroudColorTable.COL_Hex, ''FFFFFF'') AS HtmlForegroundColor 
+	,''#'' + ISNULL(BackgroudColorTable.COL_Hex, ''FFFFFF'') AS HtmlBackgroundColor  
+	,''#'' + ISNULL(LineColorTable.COL_Hex, 1) AS HtmlLineColor 
+	 
+	,unpiv.indicatorname 
+	,unpiv.indicatorvalue 
+FROM 
+(
+	SELECT 
+		 MainView.AP_LEG_Nr 
+		--,MainView.AP_LEG_Mandant 
+		--,MainView.AP_LEG_DWG 
+		 
+		,MainView.' + ISNULL(QUOTENAME(@strTextSource), 'UnknownColumnName') + N' AS [Text] 
+		 
+		,MainView.AP_LEG_Pattern 
+		,MainView.AP_LEG_ForeColor 
+		,MainView.AP_LEG_BackColor
+		
+'
+		+ ISNULL(@strSourceColumnValues, N'') + 
+		N'
+	FROM ' 
+	+ 
+	CASE 
+		WHEN LEFT(@strDataSource, 3) = N'tfu' 
+			THEN QUOTENAME(@strDataSource) + N'(@in_DWG, CURRENT_TIMESTAMP)' 
+	ELSE QUOTENAME(@strDataSource) 
+	END 
+	+  
+	N' AS MainView 
+	WHERE MainView.AP_LEG_DWG = @in_DWG 
+	--AND MainView.AP_LEG_Nr &gt; 0 
+) AS toUpivot 
+
+UNPIVOT 
+( 
+	indicatorvalue FOR indicatorname 
+	IN (' + ISNULL(@strSourceColumnNames, N'') + N') 
+) AS unpiv 
+
+LEFT JOIN T_SYS_ApertureColorToHex AS ForegroudColorTable 
+	ON ForegroudColorTable.COL_Aperture = AP_LEG_ForeColor 
+	AND ForegroudColorTable.COL_Status = 1 
+		
+LEFT JOIN T_SYS_ApertureColorToHex AS BackgroudColorTable 
+	ON BackgroudColorTable.COL_Aperture = AP_LEG_BackColor 
+	AND BackgroudColorTable.COL_Status = 1 
+	
+
+LEFT JOIN T_SYS_ApertureColorToHex AS LineColorTable 
+	ON LineColorTable.COL_Aperture = AP_LEG_BackColor 
+	AND LineColorTable.COL_Status = 1 
+	
+ORDER BY AP_LEG_Nr 
+'
+
+-- PRINT @strSQL 
+EXECUTE(@strSQL) 
+</CommandText>
+        <Timeout>300</Timeout>
+      </Query>
+      <Fields>
+        <Field Name="AP_LEG_Nr">
+          <DataField>AP_LEG_Nr</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Text">
+          <DataField>Text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AP_LEG_Pattern">
+          <DataField>AP_LEG_Pattern</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="AP_LEG_ForeColor">
+          <DataField>AP_LEG_ForeColor</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HtmlForegroundColor">
+          <DataField>HtmlForegroundColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HtmlBackgroundColor">
+          <DataField>HtmlBackgroundColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HtmlLineColor">
+          <DataField>HtmlLineColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="indicatorname">
+          <DataField>indicatorname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="indicatorvalue">
+          <DataField>indicatorvalue</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DATA_Layersetinfo">
+      <Query>
+        <DataSourceName>COR_Basic</DataSourceName>
+        <CommandText>
+SELECT LY_UID
+      ,LY_MDT_ID
+      ,LY_Code
+      ,LY_Kurz_DE
+      ,LY_Kurz_FR
+      ,LY_Kurz_IT
+      ,LY_Kurz_EN
+      ,LY_Lang_DE
+      ,LY_Lang_FR
+      ,LY_Lang_IT
+      ,LY_Lang_EN
+      ,LY_Status
+      ,LY_Sort
+      ,LY_StylizerFore
+      ,LY_StylizerBack
+      ,LY_StylizerPattern
+      ,LY_StylizerLine
+      ,LY_IsDefault
+      ,LY_DatumMut
+      ,LY_DatumUser
+      ,LY_Legende_View
+      ,LY_Legende_TextField
+      ,LY_Legende_ValueField
+      ,LY_Legende_HasFlaeche
+      ,LY_Legende_HasAnzahl
+      ,LY_Legende_HasLanguage
+      ,LY_OldCode
+      ,LY_Stylizer
+FROM T_SYS_Ref_Layerset
+WHERE LY_UID = 'C9F17F68-2903-4CF2-8E1B-0F1B9D8900C7' </CommandText>
+        <Timeout>300</Timeout>
+      </Query>
+      <Fields>
+        <Field Name="LY_UID">
+          <DataField>LY_UID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="LY_MDT_ID">
+          <DataField>LY_MDT_ID</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LY_Code">
+          <DataField>LY_Code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Kurz_DE">
+          <DataField>LY_Kurz_DE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Kurz_FR">
+          <DataField>LY_Kurz_FR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Kurz_IT">
+          <DataField>LY_Kurz_IT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Kurz_EN">
+          <DataField>LY_Kurz_EN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Lang_DE">
+          <DataField>LY_Lang_DE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Lang_FR">
+          <DataField>LY_Lang_FR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Lang_IT">
+          <DataField>LY_Lang_IT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Lang_EN">
+          <DataField>LY_Lang_EN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Status">
+          <DataField>LY_Status</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LY_Sort">
+          <DataField>LY_Sort</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LY_StylizerFore">
+          <DataField>LY_StylizerFore</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LY_StylizerBack">
+          <DataField>LY_StylizerBack</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LY_StylizerPattern">
+          <DataField>LY_StylizerPattern</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LY_StylizerLine">
+          <DataField>LY_StylizerLine</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="LY_IsDefault">
+          <DataField>LY_IsDefault</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="LY_DatumMut">
+          <DataField>LY_DatumMut</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="LY_DatumUser">
+          <DataField>LY_DatumUser</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Legende_View">
+          <DataField>LY_Legende_View</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Legende_TextField">
+          <DataField>LY_Legende_TextField</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Legende_ValueField">
+          <DataField>LY_Legende_ValueField</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Legende_HasFlaeche">
+          <DataField>LY_Legende_HasFlaeche</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="LY_Legende_HasAnzahl">
+          <DataField>LY_Legende_HasAnzahl</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="LY_Legende_HasLanguage">
+          <DataField>LY_Legende_HasLanguage</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="LY_OldCode">
+          <DataField>LY_OldCode</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LY_Stylizer">
+          <DataField>LY_Stylizer</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DATA_LayersetFelder">
+      <Query>
+        <DataSourceName>COR_Basic</DataSourceName>
+        <CommandText>SELECT        LYC_UID, LYC_LY_UID, LYC_Titel_DE, LYC_Titel_FR, LYC_Titel_IT, LYC_Titel_EN, LYC_Width, LYC_WertFeld, LYC_Masseinheit, LYC_NumberFormat, LYC_Sort
+FROM            T_SYS_Ref_Layerset_Felder
+WHERE        (LYC_LY_UID = 'C9F17F68-2903-4CF2-8E1B-0F1B9D8900C7')
+ORDER BY LYC_Sort</CommandText>
+        <Timeout>300</Timeout>
+      </Query>
+      <Fields>
+        <Field Name="LYC_UID">
+          <DataField>LYC_UID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="LYC_LY_UID">
+          <DataField>LYC_LY_UID</DataField>
+          <rd:TypeName>System.Guid</rd:TypeName>
+        </Field>
+        <Field Name="LYC_Titel_DE">
+          <DataField>LYC_Titel_DE</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LYC_Titel_FR">
+          <DataField>LYC_Titel_FR</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LYC_Titel_IT">
+          <DataField>LYC_Titel_IT</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LYC_Titel_EN">
+          <DataField>LYC_Titel_EN</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LYC_Width">
+          <DataField>LYC_Width</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="LYC_WertFeld">
+          <DataField>LYC_WertFeld</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LYC_Masseinheit">
+          <DataField>LYC_Masseinheit</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LYC_NumberFormat">
+          <DataField>LYC_NumberFormat</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="LYC_Sort">
+          <DataField>LYC_Sort</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="in_sprache">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>DE</Value>
+        </Values>
+      </DefaultValue>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Sprache</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>5229d360-f43e-4e95-b40f-b08df585710d</rd:ReportID>
+</Report>

@@ -25,6 +25,11 @@ namespace Basic_SQL
             // csb.InitialCatalog = "ReportServer";
 
 
+            csb.DataSource = @"CORDB2008R2";
+            csb.InitialCatalog = "COR_Basic_SwissLife";
+
+
+
             csb.IntegratedSecurity = true;
 
 

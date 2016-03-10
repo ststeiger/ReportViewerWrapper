@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2005/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSources>
+    <DataSource Name="COR_Basic">
+      <rd:DataSourceID>dd050617-b03e-41a4-a274-f23c88a19980</rd:DataSourceID>
+      <DataSourceReference>COR_Basic</DataSourceReference>
+    </DataSource>
+  </DataSources>
+  <InteractiveHeight>11in</InteractiveHeight>
+  <rd:DrawGrid>true</rd:DrawGrid>
+  <InteractiveWidth>8.5in</InteractiveWidth>
+  <rd:GridSpacing>0.25cm</rd:GridSpacing>
+  <rd:SnapToGrid>true</rd:SnapToGrid>
+  <RightMargin>2.5cm</RightMargin>
+  <LeftMargin>2.5cm</LeftMargin>
+  <BottomMargin>2.5cm</BottomMargin>
+  <rd:ReportID>f4a0a172-c8bb-4dfc-b457-b61f3214269f</rd:ReportID>
+  <PageWidth>29.7cm</PageWidth>
+  <DataSets>
+    <DataSet Name="DATA_Legenden">
+      <Fields>
+        <Field Name="AP_LEG_Nr">
+          <DataField>AP_LEG_Nr</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="Text">
+          <DataField>Text</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="AP_LEG_Pattern">
+          <DataField>AP_LEG_Pattern</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="AP_LEG_ForeColor">
+          <DataField>AP_LEG_ForeColor</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="HtmlForegroundColor">
+          <DataField>HtmlForegroundColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HtmlBackgroundColor">
+          <DataField>HtmlBackgroundColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="HtmlLineColor">
+          <DataField>HtmlLineColor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="indicatorname">
+          <DataField>indicatorname</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="indicatorvalue">
+          <DataField>indicatorvalue</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>COR_Basic</DataSourceName>
+        <CommandText>DECLARE @in_DWG varchar(50) 
+SET @in_DWG  = '0001_gbBC_EG00_0000'
+
+
+SELECT 
+	  unpiv.AP_LEG_Nr 
+	--,unpiv.AP_LEG_Mandant 
+	--,unpiv.AP_LEG_DWG 
+	 
+	,unpiv.[Text] 
+	 
+	,unpiv.AP_LEG_Pattern 
+	,unpiv.AP_LEG_ForeColor
+	
+	,'#' + ISNULL(ForegroudColorTable.COL_Hex, 'FFFFFF') AS HtmlForegroundColor 
+	,'#' + ISNULL(BackgroudColorTable.COL_Hex, 'FFFFFF') AS HtmlBackgroundColor  
+	,'#' + ISNULL(LineColorTable.COL_Hex, 1) AS HtmlLineColor 
+	 
+	,unpiv.indicatorname 
+	,unpiv.indicatorvalue 
+FROM 
+(
+	SELECT 
+		 MainView.AP_LEG_Nr 
+		--,MainView.AP_LEG_Mandant 
+		--,MainView.AP_LEG_DWG 
+		 
+		,MainView.AP_LEG_ZOE_Name AS [Text]
+		 
+		,MainView.AP_LEG_Pattern 
+		,MainView.AP_LEG_ForeColor 
+		,MainView.AP_LEG_BackColor
+		 
+		,AP_LEG_Flaeche
+		--,CAST(AP_LEG_Anzahl AS float) AS AP_LEG_Anzahl
+		,CAST(BAP AS float) AS BAP
+		,CAST(EAP AS float) AS EAP
+	FROM tfu_AP_Legende_OEAP_Zonenplanung(@in_DWG, CURRENT_TIMESTAMP) AS MainView 
+	WHERE MainView.AP_LEG_DWG = @in_DWG 
+	--AND MainView.AP_LEG_Nr &gt; 0 
+) AS toUpivot 
+
+UNPIVOT 
+( 
+	indicatorvalue FOR indicatorname 
+	IN (AP_LEG_Flaeche/*, AP_LEG_Anzahl*/, EAP, BAP) 
+) AS unpiv 
+
+LEFT JOIN T_SYS_ApertureColorToHex AS ForegroudColorTable 
+	ON ForegroudColorTable.COL_Aperture = AP_LEG_ForeColor 
+	AND ForegroudColorTable.COL_Status = 1 
+		
+LEFT JOIN T_SYS_ApertureColorToHex AS BackgroudColorTable 
+	ON BackgroudColorTable.COL_Aperture = AP_LEG_BackColor 
+	AND BackgroudColorTable.COL_Status = 1 
+	
+
+LEFT JOIN T_SYS_ApertureColorToHex AS LineColorTable 
+	ON LineColorTable.COL_Aperture = AP_LEG_BackColor 
+	AND LineColorTable.COL_Status = 1 
+	
+ORDER BY AP_LEG_Nr 
+
+--SELECT * FROM tfu_AP_Legende_OEAP_Zonenplanung(@in_DWG, CURRENT_TIMESTAMP) AS MainView  BY AP_LEG_Nr</CommandText>
+        <Timeout>300</Timeout>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+    </DataSet>
+  </DataSets>
+  <Code>
+    ' =Code.GetFieldFormatter("DE", Fields!indicatorname.Value)
+    Public Function GetFieldFormatter(strLanguage As String, strKey As String) As String
+        Dim dictFields As New System.Collections.Generic.Dictionary(Of String, String)()
+        dictFields.Add("AP_LEG_Anzahl", "N0")
+        dictFields.Add("AP_LEG_Flaeche", "N2")
+        dictFields.Add("BAP", "N0")
+        dictFields.Add("EAP", "N0")
+
+        If dictFields.ContainsKey(strKey) Then
+            Return dictFields(strKey)
+        End If
+
+        Return ""
+    End Function
+
+
+    Public Function GetFieldTitle(strLanguage As String, strKey As String) As String
+        Dim AP_LEG_Anzahl As String() = New String() {"Anzahl", "Nombre", "Numero", "Numero"}
+        Dim AP_LEG_Flaeche As String() = New String() {"Fläche", "Surface", "Superficie", "Superficie"}
+        Dim BAP As String() = New String() {"BAP", "BAP", "BAP", "BAP"}
+        Dim EAP As String() = New String() {"EAP", "EAP", "EAP", "EAP"}
+
+
+        Dim dictFields As New System.Collections.Generic.Dictionary(Of String, String())()
+        dictFields.Add("AP_LEG_Anzahl", AP_LEG_Anzahl)
+        dictFields.Add("AP_LEG_Flaeche", AP_LEG_Flaeche)
+        dictFields.Add("BAP", BAP)
+        dictFields.Add("EAP", EAP)
+
+        Dim i As Integer = 0
+        If System.StringComparer.InvariantCultureIgnoreCase.Equals(strLanguage, "FR") Then
+            i = 1
+        ElseIf System.StringComparer.InvariantCultureIgnoreCase.Equals(strLanguage, "IT") Then
+            i = 2
+        ElseIf System.StringComparer.InvariantCultureIgnoreCase.Equals(strLanguage, "EN") Then
+            i = 3
+        End If
+
+        If dictFields.ContainsKey(strKey) Then
+            Return dictFields(strKey)(i)
+        End If
+
+        Return strKey
+    End Function 
+
+
+
+    Public Function GetMeasurementUnit(strLanguage As String, strKey As String) As String
+        Dim dictFields As New System.Collections.Generic.Dictionary(Of String, String)()
+        dictFields.Add("AP_LEG_Anzahl", "")
+        dictFields.Add("AP_LEG_Flaeche", "m²")
+        dictFields.Add("BAP", "")
+        dictFields.Add("EAP", "")
+
+        If dictFields.ContainsKey(strKey) Then
+            Return dictFields(strKey)
+        End If
+
+        Return ""
+    End Function</Code>
+  <Width>12.53968cm</Width>
+  <Body>
+    <ColumnSpacing>1cm</ColumnSpacing>
+    <ReportItems>
+      <Matrix Name="matrix1">
+        <MatrixColumns>
+          <MatrixColumn>
+            <Width>2.53968cm</Width>
+          </MatrixColumn>
+        </MatrixColumns>
+        <DataSetName>DATA_Legenden</DataSetName>
+        <RowGroupings>
+          <RowGrouping>
+            <Width>2cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_AP_LEG_Nr">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!AP_LEG_Nr.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="AP_LEG_Nr">
+                  <rd:DefaultName>AP_LEG_Nr</rd:DefaultName>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>2</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!AP_LEG_Nr.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+          <RowGrouping>
+            <Width>8cm</Width>
+            <DynamicRows>
+              <Grouping Name="matrix1_Text">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!Text.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="Text">
+                  <rd:DefaultName>Text</rd:DefaultName>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>1</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Fields!Text.Value</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicRows>
+          </RowGrouping>
+        </RowGroupings>
+        <ColumnGroupings>
+          <ColumnGrouping>
+            <Height>0.63492cm</Height>
+            <DynamicColumns>
+              <Grouping Name="matrix1_indicatorname">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!indicatorname.Value</GroupExpression>
+                </GroupExpressions>
+              </Grouping>
+              <ReportItems>
+                <Textbox Name="indicatorname">
+                  <rd:DefaultName>indicatorname</rd:DefaultName>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <PaddingLeft>2pt</PaddingLeft>
+                    <PaddingRight>2pt</PaddingRight>
+                    <PaddingTop>2pt</PaddingTop>
+                    <PaddingBottom>2pt</PaddingBottom>
+                  </Style>
+                  <ZIndex>3</ZIndex>
+                  <CanGrow>true</CanGrow>
+                  <Value>=Code.GetFieldTitle("DE", Fields!indicatorname.Value)</Value>
+                </Textbox>
+              </ReportItems>
+            </DynamicColumns>
+          </ColumnGrouping>
+        </ColumnGroupings>
+        <Corner>
+          <ReportItems>
+            <Table Name="table2">
+              <ZIndex>4</ZIndex>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+              <Header>
+                <TableRows>
+                  <TableRow>
+                    <TableCells>
+                      <TableCell>
+                        <ReportItems>
+                          <Textbox Name="textbox4">
+                            <Style>
+                              <TextAlign>Right</TextAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                            <ZIndex>1</ZIndex>
+                            <CanGrow>true</CanGrow>
+                            <Value>Nr.</Value>
+                          </Textbox>
+                        </ReportItems>
+                      </TableCell>
+                      <TableCell>
+                        <ReportItems>
+                          <Textbox Name="textbox5">
+                            <Style>
+                              <TextAlign>Left</TextAlign>
+                              <PaddingLeft>2pt</PaddingLeft>
+                              <PaddingRight>2pt</PaddingRight>
+                              <PaddingTop>2pt</PaddingTop>
+                              <PaddingBottom>2pt</PaddingBottom>
+                            </Style>
+                            <CanGrow>true</CanGrow>
+                            <Value>Text</Value>
+                          </Textbox>
+                        </ReportItems>
+                      </TableCell>
+                    </TableCells>
+                    <Height>0.63492cm</Height>
+                  </TableRow>
+                </TableRows>
+              </Header>
+              <TableColumns>
+                <TableColumn>
+                  <Width>2cm</Width>
+                </TableColumn>
+                <TableColumn>
+                  <Width>8cm</Width>
+                </TableColumn>
+              </TableColumns>
+            </Table>
+          </ReportItems>
+        </Corner>
+        <MatrixRows>
+          <MatrixRow>
+            <Height>0.63492cm</Height>
+            <MatrixCells>
+              <MatrixCell>
+                <ReportItems>
+                  <Textbox Name="indicatorvalue">
+                    <rd:DefaultName>indicatorvalue</rd:DefaultName>
+                    <Style>
+                      <Format>=Code.GetFieldFormatter("DE", "Fields!indicatorname.Value")</Format>
+                      <TextAlign>Right</TextAlign>
+                      <PaddingLeft>2pt</PaddingLeft>
+                      <PaddingRight>2pt</PaddingRight>
+                      <PaddingTop>2pt</PaddingTop>
+                      <PaddingBottom>2pt</PaddingBottom>
+                      <Language>de-CH</Language>
+                    </Style>
+                    <CanGrow>true</CanGrow>
+                    <Value>=Sum(Fields!indicatorvalue.Value)</Value>
+                  </Textbox>
+                </ReportItems>
+              </MatrixCell>
+            </MatrixCells>
+          </MatrixRow>
+        </MatrixRows>
+      </Matrix>
+    </ReportItems>
+    <Height>1.26984cm</Height>
+  </Body>
+  <Language>de-DE</Language>
+  <TopMargin>2.5cm</TopMargin>
+  <PageHeight>21cm</PageHeight>
+</Report>

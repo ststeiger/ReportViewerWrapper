@@ -18,6 +18,10 @@ namespace Basic_SQL
             csb.InitialCatalog = "HBD_CAFM_V3";
 
 
+            // csb.DataSource = @"CORDB2008R2";
+            // csb.InitialCatalog = "COR_Basic_SwissLife";
+
+
             // csb.DataSource = "CORDB2008R2";
             // csb.InitialCatalog = "Roomplanning";
 

@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <EmbeddedResource Include="LegendenDesign2008.rdl" />
     <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.Common.dll" />
     <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.DataVisualization.DLL" />
     <None Include="Libs\ReportViewer\2012\Microsoft.ReportViewer.Design.DLL" />

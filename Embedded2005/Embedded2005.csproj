@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <EmbeddedResource Include="LegendenDesign.rdl" />
     <None Include="Libs\ReportViewer\2005\Microsoft.ReportViewer.Common.dll" />
     <None Include="Libs\ReportViewer\2005\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
     <None Include="Libs\ReportViewer\2005\Microsoft.ReportViewer.WebForms.dll" />
