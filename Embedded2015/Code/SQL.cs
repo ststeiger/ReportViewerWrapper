@@ -14,20 +14,23 @@ namespace Basic_SQL
             System.Data.SqlClient.SqlConnectionStringBuilder csb = new System.Data.SqlClient.SqlConnectionStringBuilder();
 
             csb.DataSource = System.Environment.MachineName;
-            csb.DataSource = @"VMSTZHDB08\SZH_DBH_1";
-            csb.InitialCatalog = "HBD_CAFM_V3";
-
-
-            csb.DataSource = "CORDB2008R2";
             csb.InitialCatalog = "Roomplanning";
 
+            if (System.StringComparer.OrdinalIgnoreCase.Equals(System.Environment.UserDomainName, "COR"))
+            {
+                csb.DataSource = @"VMSTZHDB08\SZH_DBH_1";
+                csb.InitialCatalog = "HBD_CAFM_V3";
 
-            // csb.DataSource = @"CORDB2008R2";
-            // csb.InitialCatalog = "COR_Basic_SwissLife";
+                csb.DataSource = "CORDB2008R2";
+                csb.InitialCatalog = "Roomplanning";
 
+                // csb.DataSource = @"CORDB2008R2";
+                // csb.InitialCatalog = "COR_Basic_SwissLife";
 
-            // csb.DataSource = "cordb2014";
-            // csb.InitialCatalog = "ReportServer";
+                // csb.DataSource = "cordb2014";
+                // csb.InitialCatalog = "ReportServer";
+            }
+
 
 
             csb.IntegratedSecurity = true;

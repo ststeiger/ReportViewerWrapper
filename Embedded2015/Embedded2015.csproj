@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,6 +90,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Code\AssemblyExporter.cs" />
+    <Compile Include="Code\DependencyWalker.cs" />
+    <Compile Include="Code\ReportTools.cs" />
+    <Compile Include="Code\WrapperClasses.cs" />
+    <Compile Include="Code\XmlTools.cs" />
     <Compile Include="Default.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Default.aspx</DependentUpon>
@@ -107,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SimpleTest.rdl" />
+    <EmbeddedResource Include="TestReport.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2015", "Embedded2015\Embedded2015.csproj", "{509A4E14-9FC7-4902-A525-22C1B7D444FF}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2008R2", "Embedded2008R2\Embedded2008R2.csproj", "{9CF2CF42-DFAD-42A0-970F-2CCB9B5D7BA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2010", "Embedded2010\Embedded2010.csproj", "{0F4E0250-2829-433B-8F59-9A56F078FBBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Embedded2016", "Embedded2016\Embedded2016.csproj", "{7CA5C3EE-BB9A-4BC3-BD9B-5F1EAE0308C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0F4E0250-2829-433B-8F59-9A56F078FBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F4E0250-2829-433B-8F59-9A56F078FBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F4E0250-2829-433B-8F59-9A56F078FBBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CA5C3EE-BB9A-4BC3-BD9B-5F1EAE0308C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CA5C3EE-BB9A-4BC3-BD9B-5F1EAE0308C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CA5C3EE-BB9A-4BC3-BD9B-5F1EAE0308C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CA5C3EE-BB9A-4BC3-BD9B-5F1EAE0308C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
