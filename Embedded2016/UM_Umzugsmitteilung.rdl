@@ -871,7 +871,7 @@
                         <RightBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
-                          <Width>=IIF(System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "PDF") OR System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "RPL"), "3pt", "2pt")</Width>
+                          <Width>=IIF(System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "PDF") OR System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "RPL"), "3pt", "1.75pt")</Width>
                         </RightBorder>
                         <BackgroundColor>#bfbfbf</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
@@ -1279,7 +1279,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!IST_RM.Value</Value>
+                              <Value>=Code.NoEmptyString(Fields!IST_RM.Value)</Value>
                               <Style>
                                 <FontFamily>CorpoS</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1503,7 +1503,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!SOLL_RM.Value</Value>
+                              <Value>=Code.NoEmptyString(Fields!SOLL_RM.Value)</Value>
                               <Style>
                                 <FontFamily>CorpoS</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1595,7 +1595,7 @@
                         <RightBorder>
                           <Color>Black</Color>
                           <Style>Solid</Style>
-                          <Width>=IIF(System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "PDF") OR System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "RPL"), "3pt", "2pt")</Width>
+                          <Width>=IIF(System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "PDF") OR System.StringComparer.OrdinalIgnoreCase.Equals(Globals!RenderFormat.Name, "RPL"), "3pt", "1.75pt")</Width>
                         </RightBorder>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>5pt</PaddingLeft>
@@ -2751,7 +2751,7 @@
         </TablixRowHierarchy>
         <DataSetName>DATA_Umzugsmitteilung</DataSetName>
         <Top>4.37914cm</Top>
-        <Height>5.33812cm</Height>
+        <Height>5.33813cm</Height>
         <Width>27.5536cm</Width>
         <Style>
           <Border>
@@ -3130,7 +3130,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=System.Convert.ToString(Globals!PageNumber) + "/" + System.Convert.ToString(Globals!TotalPages)</Value>
+                  <Value>=Globals!PageNumber &amp; "/" &amp; Globals!TotalPages</Value>
                   <Style>
                     <FontFamily>CorpoS</FontFamily>
                     <FontSize>8pt</FontSize>
@@ -3261,163 +3261,172 @@
           </QueryParameter>
         </QueryParameters>
         <CommandText>
-					-- DECLARE @_in_umzugsuid AS varchar(36)
-					-- DECLARE @_in_sprache AS varchar(2)
-					-- SET @_in_umzugsuid= '0b0ee6be-90e4-42be-929e-4b9a62625f54' -- '85E9CAC5-38A8-4E43-8F0F-E2B7D9944FD6'
-					-- SET @_in_umzugsuid = 'A859473B-7286-409C-ACC2-005B502E95B2'
-					-- SET @_in_sprache = 'DE'
+-- DECLARE @_in_umzugsuid AS varchar(36)
+-- DECLARE @_in_sprache AS varchar(2)
+-- SET @_in_umzugsuid= '0b0ee6be-90e4-42be-929e-4b9a62625f54' -- '85E9CAC5-38A8-4E43-8F0F-E2B7D9944FD6'
+-- SET @_in_umzugsuid = 'A859473B-7286-409C-ACC2-005B502E95B2'
+-- SET @_in_sprache = 'DE'
 
 
-					DECLARE @isJuliusBaer bit
-					SET @isJuliusBaer = 0
-
-					IF (SELECT TOP 1 MDT_Lang_DE FROM T_AP_Ref_Mandant WHERE MDT_ID = 0) = 'JuliusBaer'
-					SET @isJuliusBaer = 1
+-- --------------------------------------
 
 
+DECLARE @isJuliusBaer bit
+SET @isJuliusBaer = 0
 
-					SELECT
-					UMU_UmzugDatum AS Datum
-					,ISNULL(UMU_UmzugZeit, '') AS Zeit
-					,ISNULL(Name, '') AS Name
-
-
-					--,UMU_UMP_UID
-					--,UMU_UID
-					--,V_UM_Umzug_Formular.KT_UID
+IF (SELECT TOP 1 MDT_Lang_DE FROM T_AP_Ref_Mandant WHERE MDT_ID = 0) = 'JuliusBaer'
+SET @isJuliusBaer = 1
 
 
-					,
-					CASE
-					WHEN @isJuliusBaer = 'true' THEN V_UM_Umzug_Formular.KT_Abteilung
-					ELSE
-					STUFF
+
+SELECT
+	 ISNULL(NULLIF(CONVERT(varchar(10), UMU_UmzugDatum, 104), ''), ' ') AS Datum
+	,ISNULL(NULLIF(UMU_UmzugZeit, ''), ' ') AS Zeit
+	,ISNULL(NULLIF(Name, ''), ' ') AS Name
+	
+	
+	--,UMU_UMP_UID
+	--,UMU_UID
+	--,V_UM_Umzug_Formular.KT_UID
+	
+	
+	,
+	CASE
+		WHEN @isJuliusBaer = 'true' THEN ISNULL(NULLIF(V_UM_Umzug_Formular.KT_Abteilung, ''), ' ')
+	ELSE
+		ISNULL
+		(
+			NULLIF
+			(
+				STUFF
+				(
 					(
-					(
-					SELECT
-					', ' +
-					CASE @_in_sprache
-					WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
-					WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_FR, 'k.A.')
-					WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_IT, 'k.A.')
-					WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_EN, 'k.A.')
-					ELSE ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
-					END AS [text()]
-					FROM T_ZO_AP_Kontakte_AP_Ref_Kostenstelle
+						SELECT
+						', ' +
+						CASE @_in_sprache
+						WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
+						WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_FR, 'k.A.')
+						WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_IT, 'k.A.')
+						WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_EN, 'k.A.')
+						ELSE ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
+						END AS [text()]
+						FROM T_ZO_AP_Kontakte_AP_Ref_Kostenstelle
 
-					LEFT JOIN T_AP_Ref_Kostenstelle
-					ON T_AP_Ref_Kostenstelle.KST_UID = T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KST_UID
-					AND T_AP_Ref_Kostenstelle.KST_Status = 1
+						LEFT JOIN T_AP_Ref_Kostenstelle
+						ON T_AP_Ref_Kostenstelle.KST_UID = T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KST_UID
+						AND T_AP_Ref_Kostenstelle.KST_Status = 1
 
-					WHERE T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KT_UID = V_UM_Umzug_Formular.KT_UID
-					AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_Status = 1
-					AND CONVERT(char(8), {fn now()}, 112)  BETWEEN CONVERT(char(8), T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumVon, 112) AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumBis
+						WHERE T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KT_UID = V_UM_Umzug_Formular.KT_UID
+						AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_Status = 1
+						AND CONVERT(char(8), {fn now()}, 112)  BETWEEN CONVERT(char(8), T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumVon, 112) AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumBis
 
-					ORDER BY KST_Code ASC
+						ORDER BY KST_Code ASC
 
-					FOR XML PATH, TYPE
+						FOR XML PATH, TYPE
 					).value('.[1]', 'nvarchar(MAX)')
 					,1
 					,2
 					,''
-					)
-					END AS [Abt.]
+				) 
+				,''	
+			)
+			,' '
+		)
+	END AS [Abt.]
+	
+	--,T_AP_Ref_Kostenstelle.KST_UID
+	--,ISNULL(T_AP_Ref_Kostenstelle.KST_Code, '') AS KST_Code
 
-					--,T_AP_Ref_Kostenstelle.KST_UID
-					--,ISNULL(T_AP_Ref_Kostenstelle.KST_Code, '') AS KST_Code
-
-					--,
-					--CASE @_in_sprache
-					--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
-					--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_FR, 'k.A.')
-					--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_IT, 'k.A.')
-					--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_EN, 'k.A.')
-					--	ELSE ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
-					--END AS [Abt.]
-
-
-					--,ISNULL(GB_Nr_Alt + '/', '') + ISNULL(GS_Alt_DE + '/', '') AS IST_GB
-					--,ISNULL(GB_Nr_Neu + '/', '') + ISNULL(GS_Neu_DE + '/', '') AS SOLL_GB
-
-					--,ISNULL(TK_Nr_Alt  + '/', '') + ISNULL(TK_Bezeichnung_Alt + '/', '') AS IST_TK
-					--,ISNULL(TK_Nr_Neu  + '/', '') + ISNULL(TK_Bezeichnung_Neu + '/', '') AS SOLL_TK
-
-					--,ISNULL(RM_Nr_Alt  + '/', '') + ISNULL(AP_Nr_Alt, '') AS IST_RM
-					--,ISNULL(RM_Nr_Neu + '/', '') + ISNULL(AP_Nr_Neu, '') AS SOLL_RM
+	--,
+	--CASE @_in_sprache
+	--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
+	--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_FR, 'k.A.')
+	--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_IT, 'k.A.')
+	--	WHEN '' THEN ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_EN, 'k.A.')
+	--	ELSE ISNULL(T_AP_Ref_Kostenstelle.KST_Lang_DE, 'k.A.')
+	--END AS [Abt.]
 
 
-					,ISNULL(GB_Nr_Alt, '') AS IST_GB
-					,ISNULL(GB_Nr_Neu, '') AS SOLL_GB
+	--,ISNULL(GB_Nr_Alt + '/', '') + ISNULL(GS_Alt_DE + '/', '') AS IST_GB
+	--,ISNULL(GB_Nr_Neu + '/', '') + ISNULL(GS_Neu_DE + '/', '') AS SOLL_GB
 
-					,ISNULL(TK_Nr_Alt, '') AS IST_TK
-					,ISNULL(TK_Nr_Neu, '') AS SOLL_TK
+	--,ISNULL(TK_Nr_Alt  + '/', '') + ISNULL(TK_Bezeichnung_Alt + '/', '') AS IST_TK
+	--,ISNULL(TK_Nr_Neu  + '/', '') + ISNULL(TK_Bezeichnung_Neu + '/', '') AS SOLL_TK
 
-					,COALESCE(NULLIF(TK_Nr_Alt, ''), GB_Nr_Alt, '') AS RPT_IST_TKGB
-					,COALESCE(NULLIF(TK_Nr_Neu,''), GB_Nr_Neu, '') AS RPT_SOLL_TKGB
+	--,ISNULL(RM_Nr_Alt  + '/', '') + ISNULL(AP_Nr_Alt, '') AS IST_RM
+	--,ISNULL(RM_Nr_Neu + '/', '') + ISNULL(AP_Nr_Neu, '') AS SOLL_RM
+	
+	
+	,ISNULL(NULLIF(GB_Nr_Alt, ''), '') AS IST_GB
+	,ISNULL(NULLIF(GB_Nr_Neu, ''), '') AS SOLL_GB
 
+	,ISNULL(NULLIF(TK_Nr_Alt, ''), ' ') AS IST_TK
+	,ISNULL(NULLIF(TK_Nr_Neu, ''), ' ') AS SOLL_TK
 
-					--,ISNULL(GS_Alt_DE, '') AS IST_GS
-					--,ISNULL(GS_Neu_DE + '/', '') AS SOLL_GS
-
-
-					,
-					CASE
-					WHEN GS_Typ_Alt = 'UG' OR GS_Typ_Alt = 'SG'
-					THEN '-' + ISNULL(GS_Nr_Alt, '')
-					ELSE ISNULL(GS_Nr_Alt, '')
-					END AS IST_GS
+	,COALESCE(NULLIF(TK_Nr_Alt, ''), NULLIF(GB_Nr_Alt, ''), ' ') AS RPT_IST_TKGB
+	,COALESCE(NULLIF(TK_Nr_Neu, ''), NULLIF(GB_Nr_Neu, ''), ' ') AS RPT_SOLL_TKGB
 
 
-					,
-					CASE
-					WHEN GS_Typ_Neu = 'UG' OR GS_Typ_Neu = 'SG'
-					THEN '-' + ISNULL(GS_Nr_Neu, '')
-					ELSE ISNULL(GS_Nr_Neu, '')
-					END AS SOLL_GS
+	--,ISNULL(GS_Alt_DE, '') AS IST_GS
+	--,ISNULL(GS_Neu_DE + '/', '') AS SOLL_GS
 
 
-					--,ISNULL(GS_Nr_Alt, '') AS IST_GS
-					--,ISNULL(GS_Nr_Neu, '') AS SOLL_GS
+	,
+	CASE
+		WHEN GS_Typ_Alt = 'UG' OR GS_Typ_Alt = 'SG'
+			THEN ISNULL('-' + GS_Nr_Alt, ' ')
+		ELSE ISNULL(NULLIF(GS_Nr_Alt, ''), ' ')
+	END AS IST_GS
+	
+	,
+	CASE
+		WHEN GS_Typ_Neu = 'UG' OR GS_Typ_Neu = 'SG'
+			THEN ISNULL('-' + GS_Nr_Neu, ' ')
+		ELSE ISNULL(NULLIF(GS_Nr_Neu, ''), ' ')
+	END AS SOLL_GS
+	
+	--,ISNULL(GS_Nr_Alt, '') AS IST_GS
+	--,ISNULL(GS_Nr_Neu, '') AS SOLL_GS
+	
+	,ISNULL(NULLIF(RM_Nr_Alt, ''), ' ') AS IST_RM
+	,ISNULL(NULLIF(RM_Nr_Neu, ''), ' ') AS SOLL_RM
+	
+	,ISNULL(NULLIF(AP_Nr_Alt, ''), ' ') AS IST_AP
+	,ISNULL(NULLIF(AP_Nr_Neu, ''), ' ') AS SOLL_AP
+	
+	--,ISNULL(GS_Alt_DE  + '/', '') + ISNULL(RM_Nr_Alt  + '/', '') + ISNULL(AP_Nr_Alt, '') AS IST_RM
+	--,ISNULL(GS_Neu_DE + '/', '') + ISNULL(RM_Nr_Neu + '/', '') + ISNULL(AP_Nr_Neu, '') AS SOLL_RM
+	
+	,ISNULL(NULLIF(UMU_Phase, ''), ' ') AS Phase
+FROM V_UM_Umzug_Formular
 
-					,ISNULL(RM_Nr_Alt, '') AS IST_RM
-					,ISNULL(RM_Nr_Neu, '') AS SOLL_RM
+--LEFT JOIN T_ZO_AP_Kontakte_AP_Ref_Kostenstelle
+--	ON T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KT_UID = V_UM_Umzug_Formular.KT_UID
+--	AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_Status = 1
+--	AND CONVERT(char(8), {fn now()}, 112)  BETWEEN CONVERT(char(8), T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumVon, 112) AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumBis
 
-					,ISNULL(AP_Nr_Alt, '') AS IST_AP
-					,ISNULL(AP_Nr_Neu, '') AS SOLL_AP
-
-					--,ISNULL(GS_Alt_DE  + '/', '') + ISNULL(RM_Nr_Alt  + '/', '') + ISNULL(AP_Nr_Alt, '') AS IST_RM
-					--,ISNULL(GS_Neu_DE + '/', '') + ISNULL(RM_Nr_Neu + '/', '') + ISNULL(AP_Nr_Neu, '') AS SOLL_RM
-
-					,UMU_Phase AS Phase
-					FROM V_UM_Umzug_Formular
-
-					--LEFT JOIN T_ZO_AP_Kontakte_AP_Ref_Kostenstelle
-					--	ON T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KT_UID = V_UM_Umzug_Formular.KT_UID
-					--	AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_Status = 1
-					--	AND CONVERT(char(8), {fn now()}, 112)  BETWEEN CONVERT(char(8), T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumVon, 112) AND T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_DatumBis
-
-					--LEFT JOIN T_AP_Ref_Kostenstelle
-					--	ON T_AP_Ref_Kostenstelle.KST_UID = T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KST_UID
-					--	AND T_AP_Ref_Kostenstelle.KST_Status = 1
+--LEFT JOIN T_AP_Ref_Kostenstelle
+--	ON T_AP_Ref_Kostenstelle.KST_UID = T_ZO_AP_Kontakte_AP_Ref_Kostenstelle.ZO_KTKST_KST_UID
+--	AND T_AP_Ref_Kostenstelle.KST_Status = 1
 
 
-					WHERE UMU_UMP_UID = @_in_umzugsuid
-					OR
-					(
-					COALESCE(@_in_umzugsuid, '') = ''
-					)
+WHERE UMU_UMP_UID = @_in_umzugsuid
+OR
+(
+	COALESCE(@_in_umzugsuid, '') = ''
+)
 
 
-					-- ORDER BY Datum, Zeit, Phase, Name
-					ORDER BY Datum, Phase, Zeit, Name
-				</CommandText>
+-- ORDER BY Datum, Zeit, Phase, Name
+ORDER BY Datum, Phase, Zeit, Name
+</CommandText>
         <Timeout>300</Timeout>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
         <Field Name="Datum">
           <DataField>Datum</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Zeit">
           <DataField>Zeit</DataField>
@@ -3727,208 +3736,225 @@
     </ReportParameter>
   </ReportParameters>
   <Code>
-		Public Function GetCulture(ByVal strReportLanguage As String) As System.Globalization.CultureInfo
-		strReportLanguage = strReportLanguage.ToLower()
+    Public Function GetCulture(ByVal strReportLanguage As String) As System.Globalization.CultureInfo
+        strReportLanguage = strReportLanguage.ToLower()
 
-		Dim strCultureString As String = ""
-		Select Case strReportLanguage
-		Case "de"
-		strCultureString = "de-ch"
-		Case "fr"
-		strCultureString = "fr-ch"
-		Case "it"
-		strCultureString = "it-ch"
-		Case "en"
-		strCultureString = "en-us"
-		Case Else
-		strCultureString = strReportLanguage
-		End Select
+        Dim strCultureString As String = ""
+        Select Case strReportLanguage
+            Case "de"
+                strCultureString = "de-ch"
+            Case "fr"
+                strCultureString = "fr-ch"
+            Case "it"
+                strCultureString = "it-ch"
+            Case "en"
+                strCultureString = "en-us"
+            Case Else
+                strCultureString = strReportLanguage
+        End Select
 
-		Return New System.Globalization.CultureInfo(strCultureString)
-		End Function
-
-
-
-
-
-		Public Function GetPageEnumeration(strFormatString as String, iPageNumber As Integer, iTotalNumberOfPages As Integer) As String
-		' Dim strFormatString As String = "Seite {0} von {1}"
-		Return String.Format(strFormatString, iPageNumber, iTotalNumberOfPages)
-		End Function
-
-
-		Public Function GetDateForCulture(iDay As Integer, iMonth As Integer, iYear As Integer, strFormat As String, strReportLanguage As String) As String
-		If String.IsNullOrEmpty(strReportLanguage) Then
-		strReportLanguage = "DE"
-		End If
-
-		If String.IsNullOrEmpty(strFormat) Then
-		strFormat = "d. MMMM yyy"
-		End If
-
-		Dim strCultureString As String = ""
-		Select Case strReportLanguage.ToLower()
-		Case "de"
-		strCultureString = "de-ch"
-		Exit Select
-		Case "fr"
-		strCultureString = "fr-ch"
-		Exit Select
-		Case "it"
-		strCultureString = "it-ch"
-		Exit Select
-		Case "en"
-		strCultureString = "en-us"
-		Exit Select
-		Case Else
-		strCultureString = strReportLanguage
-		Exit Select
-		End Select
-		' End Switch strReportLanguage
-		Dim ci As New System.Globalization.CultureInfo(strCultureString)
-		Dim dt As New DateTime(iYear, iMonth, iDay)
-
-		Dim strDateAsString As String = dt.ToString(strFormat, ci)
-		strDateAsString = ci.TextInfo.ToTitleCase(strDateAsString)
-
-		Return strDateAsString
-		End Function ' GetDateForCulture
-
-
-
-		Public Function GetDateForCulture(ByVal iDay As Integer, ByVal iMonthNum As Integer, ByVal iYear As Integer, ByVal strReportLanguage As String) As String
-		Dim strReturnValue As String = ""
-		Try
-		strReportLanguage = strReportLanguage.ToLower()
-
-		'Dim dtThisDateDate As DateTime = DateTime.Now
-		'Dim dtThisDateDate As New DateTime(2010, 12, 31)
-		Dim dtThisDateDate As New DateTime(iYear, iMonthNum, iDay)
-
-		Dim strCultureString As String = ""
-		Select Case strReportLanguage
-		Case "de"
-		strCultureString = "de-ch"
-		Case "fr"
-		strCultureString = "fr-ch"
-		Case "it"
-		strCultureString = "it-ch"
-		Case "en"
-		strCultureString = "en-us"
-		Case Else
-		strCultureString = strReportLanguage
-		End Select
-
-		Dim ci As New System.Globalization.CultureInfo(strCultureString)
-
-		Dim strFormat = ci.DateTimeFormat.LongDatePattern
-		If ci.CompareInfo.IndexOf(strFormat, "dddd, ", System.Globalization.CompareOptions.IgnoreCase) &gt; -1 Then
-		strFormat = Mid(ci.DateTimeFormat.LongDatePattern, Len("dddd, ") + 1)
-		End If
-
-		strReturnValue = dtThisDateDate.ToString(strFormat, ci)
-		'strReturnValue = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(strReturnValue)
-		strReturnValue = ci.TextInfo.ToTitleCase(strReturnValue)
-		Catch ex As Exception
-		strReturnValue = iDay.ToString().PadLeft(2, "0") + "." + iMonthNum.ToString().PadLeft(2, "0") + "." + iYear.ToString()
-		End Try
-
-		Return strReturnValue
-		End Function
-
-
-		Function Concat(x As String, y As String, z As String) As String
-		If String.IsNullOrEmpty(x) Then
-		If String.IsNullOrEmpty(y) Then
-		Return ""
-		Else
-		Return y
-		End If
-		Else
-		If String.IsNullOrEmpty(y) Then
-		Return x
-		Else
-		Return x + z + y
-		End If
-		End If
-
-		Return ""
-		End Function
+        Return New System.Globalization.CultureInfo(strCultureString)
+    End Function
 
 
 
 
-		Public Function ReplacementCall(strReplaceInput As String) As String
-		Return strReplaceInput.TrimStart("0"c)
-		End Function
+
+    Public Function GetPageEnumeration(strFormatString As String, iPageNumber As Integer, iTotalNumberOfPages As Integer) As String
+        ' Dim strFormatString As String = "Seite {0} von {1}"
+        Return String.Format(strFormatString, iPageNumber, iTotalNumberOfPages)
+    End Function
 
 
-		Public Function RemoveNewLine(obj As Object) As String
-		Return RemoveNewLine(obj, False)
-		End Function ' RemoveNewLine
+    Public Function GetDateForCulture(iDay As Integer, iMonth As Integer, iYear As Integer, strFormat As String, strReportLanguage As String) As String
+        If String.IsNullOrEmpty(strReportLanguage) Then
+            strReportLanguage = "DE"
+        End If
 
+        If String.IsNullOrEmpty(strFormat) Then
+            strFormat = "d. MMMM yyy"
+        End If
 
-		Public Function RemoveNewLine(obj As Object, bWithRemoveRoom As Boolean) As String
-		If obj Is Nothing Then
-		Return ""
-		End If
+        Dim strCultureString As String = ""
+        Select Case strReportLanguage.ToLower()
+            Case "de"
+                strCultureString = "de-ch"
+                Exit Select
+            Case "fr"
+                strCultureString = "fr-ch"
+                Exit Select
+            Case "it"
+                strCultureString = "it-ch"
+                Exit Select
+            Case "en"
+                strCultureString = "en-us"
+                Exit Select
+            Case Else
+                strCultureString = strReportLanguage
+                Exit Select
+        End Select
+        ' End Switch strReportLanguage
+        Dim ci As New System.Globalization.CultureInfo(strCultureString)
+        Dim dt As New System.DateTime(iYear, iMonth, iDay)
 
-		Dim str As String = System.Convert.ToString(obj)
+        Dim strDateAsString As String = dt.ToString(strFormat, ci)
+        strDateAsString = ci.TextInfo.ToTitleCase(strDateAsString)
 
-		If String.IsNullOrEmpty(str) Then
-		Return str
-		End If
-
-
-		'str = str.Replace("/", Environment.NewLine)
-		str = str.Replace(vbCr, "")
-		str = str.Replace(vbLf, "")
-		str = str.Trim()
-
-
-		If bWithRemoveRoom Then
-		str = System.Text.RegularExpressions.Regex.Replace(str, "^RM", "")
-		str = System.Text.RegularExpressions.Regex.Replace(str, "\.00$", "")
-		End If
-
-		If System.Text.RegularExpressions.Regex.IsMatch(str, "^0+$") Then
-		str = "0"
-		Else
-		If str IsNot Nothing Then
-		Dim pattern As String = "^[-]?\s*(?&lt;ID&gt;[0-9]+)\s*$"
-		Dim regex As New System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase Or System.Text.RegularExpressions.RegexOptions.Multiline)
-
-		str = regex.Replace(str, New System.Text.RegularExpressions.MatchEvaluator(AddressOf ReplaceLeadingZeros))
-		End If
-
-		End If
-
-		Return str
-		End Function ' RemoveNewLine
+        Return strDateAsString
+    End Function ' GetDateForCulture
 
 
 
+    Public Function GetDateForCulture(ByVal iDay As Integer, ByVal iMonthNum As Integer, ByVal iYear As Integer, ByVal strReportLanguage As String) As String
+        Dim strReturnValue As String = ""
+        Try
+            strReportLanguage = strReportLanguage.ToLower()
 
-		Public Function ReplaceLeadingZeros(m As System.Text.RegularExpressions.Match) As String
-		Dim retVal As String = m.Value
-		Dim capt As System.Text.RegularExpressions.Capture = m.Groups("ID")
+            'Dim dtThisDateDate As DateTime = DateTime.Now
+            'Dim dtThisDateDate As New DateTime(2010, 12, 31)
+            Dim dtThisDateDate As New System.DateTime(iYear, iMonthNum, iDay)
+
+            Dim strCultureString As String = ""
+            Select Case strReportLanguage
+                Case "de"
+                    strCultureString = "de-ch"
+                Case "fr"
+                    strCultureString = "fr-ch"
+                Case "it"
+                    strCultureString = "it-ch"
+                Case "en"
+                    strCultureString = "en-us"
+                Case Else
+                    strCultureString = strReportLanguage
+            End Select
+
+            Dim ci As New System.Globalization.CultureInfo(strCultureString)
+
+            Dim strFormat = ci.DateTimeFormat.LongDatePattern
+            If ci.CompareInfo.IndexOf(strFormat, "dddd, ", System.Globalization.CompareOptions.IgnoreCase) &gt; -1 Then
+                strFormat = Mid(ci.DateTimeFormat.LongDatePattern, Len("dddd, ") + 1)
+            End If
+
+            strReturnValue = dtThisDateDate.ToString(strFormat, ci)
+            'strReturnValue = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(strReturnValue)
+            strReturnValue = ci.TextInfo.ToTitleCase(strReturnValue)
+        Catch ex As System.Exception
+            strReturnValue = iDay.ToString().PadLeft(2, "0") + "." + iMonthNum.ToString().PadLeft(2, "0") + "." + iYear.ToString()
+        End Try
+
+        Return strReturnValue
+    End Function
 
 
-		If capt Is Nothing Then
-		Return retVal
-		End If
+    Function Concat(x As String, y As String, z As String) As String
+        If String.IsNullOrEmpty(x) Then
+            If String.IsNullOrEmpty(y) Then
+                Return ""
+            Else
+                Return y
+            End If
+        Else
+            If String.IsNullOrEmpty(y) Then
+                Return x
+            Else
+                Return x + z + y
+            End If
+        End If
 
-		Dim ind As Integer = capt.Index - m.Index
-		Dim sb As New System.Text.StringBuilder(retVal)
-		sb.Remove(ind, capt.Length)
-		sb.Insert(ind, capt.Value.TrimStart("0"C))
-		retVal = sb.ToString()
-		sb.Length = 0
-		sb = Nothing
+        Return ""
+    End Function
 
-		Return retVal
-		End Function
-	</Code>
+
+
+
+    Public Function ReplacementCall(strReplaceInput As String) As String
+        Return strReplaceInput.TrimStart("0"c)
+    End Function
+
+
+    Public Function RemoveNewLine(obj As Object) As String
+        Return RemoveNewLine(obj, False)
+    End Function ' RemoveNewLine
+
+
+    Public Function RemoveNewLine(obj As Object, bWithRemoveRoom As Boolean) As String
+        If obj Is Nothing Then
+            Return " "
+        End If
+
+        Dim str As String = System.Convert.ToString(obj)
+
+        If String.IsNullOrEmpty(str) Then
+            Return " "
+        End If
+
+
+        'str = str.Replace("/", Environment.NewLine)
+        str = str.Replace(vbCr, "")
+        str = str.Replace(vbLf, "")
+        str = str.Trim()
+
+
+        If bWithRemoveRoom Then
+            str = System.Text.RegularExpressions.Regex.Replace(str, "^RM", "")
+            str = System.Text.RegularExpressions.Regex.Replace(str, "\.00$", "")
+        End If
+
+        If System.Text.RegularExpressions.Regex.IsMatch(str, "^0+$") Then
+            str = "0"
+        Else
+            If str IsNot Nothing Then
+                Dim pattern As String = "^[-]?\s*(?&lt;ID&gt;[0-9]+)\s*$"
+                Dim regex As New System.Text.RegularExpressions.Regex(pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase Or System.Text.RegularExpressions.RegexOptions.Multiline)
+
+                str = regex.Replace(str, New System.Text.RegularExpressions.MatchEvaluator(AddressOf ReplaceLeadingZeros))
+            End If
+
+        End If
+
+        str = NoEmptyString(str)
+
+        Return str
+    End Function ' RemoveNewLine
+
+
+    Function NoEmptyString(obj As Object) As String
+        If obj Is Nothing Then
+            Return " "
+        End If
+
+        Dim str As String = System.Convert.ToString(obj)
+
+        If String.IsNullOrEmpty(str) Then
+            Return " "
+        End If
+
+        Return str
+    End Function
+
+
+    Public Function ReplaceLeadingZeros(m As System.Text.RegularExpressions.Match) As String
+        Dim retVal As String = m.Value
+        Dim capt As System.Text.RegularExpressions.Capture = m.Groups("ID")
+
+
+        If capt Is Nothing Then
+            Return retVal
+        End If
+
+        Dim ind As Integer = capt.Index - m.Index
+        Dim sb As New System.Text.StringBuilder(retVal)
+        sb.Remove(ind, capt.Length)
+        sb.Insert(ind, capt.Value.TrimStart("0"c))
+        retVal = sb.ToString()
+        sb.Length = 0
+        sb = Nothing
+
+        Return retVal
+    End Function
+
+
+</Code>
   <EmbeddedImages>
     <EmbeddedImage Name="schachtel">
       <MIMEType>image/png</MIMEType>
