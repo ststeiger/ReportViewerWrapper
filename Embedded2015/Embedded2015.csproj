@@ -105,6 +105,8 @@
     <Compile Include="Code\ReportFormatInfo.cs" />
     <Compile Include="Code\ReportRepository.cs" />
     <Compile Include="Code\SQL.cs" />
+    <Compile Include="Umzugsmitteilung.cs" />
+    <Compile Include="Umzugsmitteilung2.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -113,6 +115,7 @@
   <ItemGroup>
     <EmbeddedResource Include="SimpleTest.rdl" />
     <EmbeddedResource Include="TestReport.rdl" />
+    <EmbeddedResource Include="UM_Umzugsmitteilung.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

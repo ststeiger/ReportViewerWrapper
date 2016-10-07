@@ -120,9 +120,14 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestReport3.cs" />
+    <Compile Include="Umzugsmitteilung.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="TestReport.rdl" />
+    <EmbeddedResource Include="UM_Umzugsmitteilung.rdl" />
+    <EmbeddedResource Include="TestReport - Kopieren.rdl" />
+    <EmbeddedResource Include="TestReport3.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

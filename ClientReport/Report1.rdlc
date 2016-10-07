@@ -1,39 +1,45 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="table1">
+      <Tablix Name="Tablix1">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.95123in</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.7874in</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.9685in</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.00896in</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98425in</Width>
+              <Width>2.5cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.9685in</Width>
+              <Width>2.5cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.5cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.5cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.22in</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="textbox2">
+                    <Textbox Name="Textbox2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -49,39 +55,16 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>textbox2</rd:DefaultName>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -92,7 +75,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="textbox3">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -111,34 +94,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>textbox3</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -149,7 +111,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="textbox4">
+                    <Textbox Name="Textbox5">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -168,34 +130,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>textbox4</rd:DefaultName>
+                      <rd:DefaultName>Textbox5</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -206,7 +147,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="textbox5">
+                    <Textbox Name="Textbox7">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -225,34 +166,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>textbox5</rd:DefaultName>
+                      <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -263,7 +183,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="textbox6">
+                    <Textbox Name="Textbox9">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -282,34 +202,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>textbox6</rd:DefaultName>
+                      <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -320,7 +219,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="textbox7">
+                    <Textbox Name="Textbox11">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -339,34 +238,13 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>textbox7</rd:DefaultName>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -377,7 +255,43 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="textbox9">
+                    <Textbox Name="Textbox13">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>BE Hash</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#7292cc</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox15">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -393,39 +307,52 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style>
-                            <TextAlign>Right</TextAlign>
-                          </Style>
+                          <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>textbox9</rd:DefaultName>
+                      <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox17">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>BE is LDAPSync</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#7292cc</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
-                        <BackgroundColor>CornflowerBlue</BackgroundColor>
+                        </Border>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -437,7 +364,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.19in</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -448,10 +375,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!BE_ID.Value</Value>
+                              <Value>=Sum(Fields!BE_ID.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -461,30 +388,9 @@
                       <rd:DefaultName>BE_ID</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -505,7 +411,7 @@
                               <Value>=Fields!BE_Name.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -515,30 +421,9 @@
                       <rd:DefaultName>BE_Name</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -559,7 +444,7 @@
                               <Value>=Fields!BE_Vorname.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -569,30 +454,9 @@
                       <rd:DefaultName>BE_Vorname</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -613,7 +477,7 @@
                               <Value>=Fields!BE_User.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -623,30 +487,9 @@
                       <rd:DefaultName>BE_User</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -667,7 +510,7 @@
                               <Value>=Fields!BE_Passwort.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -677,30 +520,9 @@
                       <rd:DefaultName>BE_Passwort</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -721,7 +543,7 @@
                               <Value>=Fields!BE_Language.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -731,30 +553,42 @@
                       <rd:DefaultName>BE_Language</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="BE_Hash">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!BE_Hash.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>BE_Hash</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
+                        </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -772,10 +606,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!BE_Level.Value</Value>
+                              <Value>=Sum(Fields!BE_Level.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
-                                <FontSize>9pt</FontSize>
+                                <Color>#4d4d4d</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -785,30 +619,42 @@
                       <rd:DefaultName>BE_Level</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>Silver</Color>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
                         </Border>
-                        <TopBorder>
-                          <Color>Silver</Color>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="BE_isLDAPSync">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!BE_isLDAPSync.Value</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>BE_isLDAPSync</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
                           <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </TopBorder>
-                        <BottomBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </BottomBorder>
-                        <LeftBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </LeftBorder>
-                        <RightBorder>
-                          <Color>Silver</Color>
-                          <Style>Solid</Style>
-                          <Width>0.25pt</Width>
-                        </RightBorder>
+                        </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -830,93 +676,66 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <KeepWithGroup>After</KeepWithGroup>
-              <RepeatOnNewPage>true</RepeatOnNewPage>
-              <KeepTogether>true</KeepTogether>
             </TablixMember>
             <TablixMember>
-              <Group Name="table1_Details_Group">
-                <DataElementName>Detail</DataElementName>
-              </Group>
-              <TablixMembers>
-                <TablixMember />
-              </TablixMembers>
-              <DataElementName>Detail_Collection</DataElementName>
-              <DataElementOutput>Output</DataElementOutput>
-              <KeepTogether>true</KeepTogether>
+              <Group Name="Details" />
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.33in</Top>
-        <Left>0.49472cm</Left>
-        <Height>0.41in</Height>
-        <Width>10.6531in</Width>
-        <Style />
-      </Tablix>
-      <Textbox Name="textbox1">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Report3</Value>
-                <Style>
-                  <FontFamily>Tahoma</FontFamily>
-                  <FontSize>18pt</FontSize>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>textbox1</rd:DefaultName>
-        <Left>0.49472cm</Left>
-        <Height>0.33in</Height>
-        <Width>6.63542in</Width>
-        <ZIndex>1</ZIndex>
+        <Height>1.2cm</Height>
+        <Width>22.5cm</Width>
         <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
+          <Border>
+            <Style>None</Style>
+          </Border>
         </Style>
-      </Textbox>
+      </Tablix>
     </ReportItems>
-    <Height>1.8796cm</Height>
+    <Height>2in</Height>
     <Style />
   </Body>
-  <Width>27.5536cm</Width>
+  <Width>8.85827in</Width>
   <Page>
     <PageHeight>21cm</PageHeight>
     <PageWidth>29.7cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
     <RightMargin>2cm</RightMargin>
-    <TopMargin>1cm</TopMargin>
-    <BottomMargin>1cm</BottomMargin>
-    <ColumnSpacing>1.27cm</ColumnSpacing>
+    <TopMargin>2cm</TopMargin>
+    <BottomMargin>2cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="COR_Basic">
-      <DataSourceReference>COR_Basic</DataSourceReference>
-      <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>f59db633-7588-4bb7-9586-519508c004af</rd:DataSourceID>
+    <DataSource Name="RoomPlanningDataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>795b535c-9042-437b-81a4-2a541cc83085</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="RoomPlanningDataSet1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>9d1d284f-3c03-4ac7-8d1b-05109d5c3d07</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>COR_Basic</DataSourceName>
-        <CommandText>SELECT TOP 10 * FROM T_Benutzer</CommandText>
-        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <DataSourceName>RoomPlanningDataSet1</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
         <Field Name="BE_ID">
@@ -991,15 +810,17 @@
           <DataField>BE_Augen</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="ID_BE_Label">
-          <DataField>_BE_Label</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
       </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>RoomPlanningDataSet1</rd:DataSetName>
+        <rd:SchemaPath>D:\Stefan.Steiger\Documents\Visual Studio 2013\Projects\ReportViewerWrapper\ClientReport\RoomPlanningDataSet1.xsd</rd:SchemaPath>
+        <rd:TableName>T_Benutzer</rd:TableName>
+        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
+        <rd:TableAdapterName>T_BenutzerTableAdapter</rd:TableAdapterName>
+      </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Language>de-DE</Language>
-  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>46786420-02a5-474c-a67c-8efdd0e0d3e6</rd:ReportID>
+  <rd:ReportID>5e9471ae-5f89-4f00-9397-1431de0a976d</rd:ReportID>
 </Report>

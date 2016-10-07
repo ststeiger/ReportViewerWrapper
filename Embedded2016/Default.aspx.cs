@@ -13,11 +13,23 @@ namespace Embedded2016
         protected void Page_Load(object sender, EventArgs e)
         {
             // Basic_SQL.SQL.GetSqlServerTypesDll(@"d:\Microsoft.SqlServer.Types.dll");
-            RenderReport();
+            // RenderReport();
+
+            
+            // byte[] baa = Portal_Reports.TestReport3.GetUmzugsmitteilung(new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.WordOpenXml), "C38CB749-1EEC-4686-9BBA-F627B9C4E8EC", "EN");
+            // return;
+
+            // RenderSimpleTestReport();
+            // return;
+            
+            //byte[] ba = Portal_Reports.Umzugsmitteilung.GetUmzugsmitteilung(new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.WordOpenXml), "C38CB749-1EEC-4686-9BBA-F627B9C4E8EC", "DE");
+            byte[] ba = Portal_Reports.Umzugsmitteilung.GetUmzugsmitteilung(new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.WordOpenXml), "C38CB749-1EEC-4686-9BBA-F627B9C4E8EC", "EN");
+            return;
+
         }
 
 
-        protected static void RenderReport()
+        protected static void RenderSimpleTestReport()
         {
             Microsoft.Reporting.WebForms.ReportViewer m_Viewer = new Microsoft.Reporting.WebForms.ReportViewer();
             // EnableFormat("foo");

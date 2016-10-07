@@ -87,6 +87,9 @@ namespace Embedded2015
         {
             // Basic_SQL.SQL.GetSqlServerTypesDll(@"d:\");
 
+            byte[] ba = Portal_Reports.Umzugsmitteilung.GetUmzugsmitteilung(new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.WordOpenXml), "C38CB749-1EEC-4686-9BBA-F627B9C4E8EC", "DE");
+            return;
+
             RenderReport();
             return;
 
