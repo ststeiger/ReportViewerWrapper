@@ -23,9 +23,6 @@ Module Code
     End Function
 
 
-
-
-
     Public Function GetPageEnumeration(strFormatString As String, iPageNumber As Integer, iTotalNumberOfPages As Integer) As String
         ' Dim strFormatString As String = "Seite {0} von {1}"
         Return String.Format(strFormatString, iPageNumber, iTotalNumberOfPages)
@@ -68,7 +65,6 @@ Module Code
 
         Return strDateAsString
     End Function ' GetDateForCulture
-
 
 
     Public Function GetDateForCulture(ByVal iDay As Integer, ByVal iMonthNum As Integer, ByVal iYear As Integer, ByVal strReportLanguage As String) As String
