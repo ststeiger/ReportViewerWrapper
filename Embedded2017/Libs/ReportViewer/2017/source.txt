@@ -1,0 +1,22 @@
+
+https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WebForms
+https://www.nuget.org/packages/Microsoft.ReportingServices.ReportViewerControl.WinForms
+https://www.nuget.org/packages/Microsoft.SqlServer.Types
+
+
+Missing:
+Microsoft.SqlServer.Types 
+
+
+{Name = "ExcelRenderer" 
+FullName = "Microsoft.ReportingServices.Rendering.ExcelRenderer.ExcelRenderer"}
+
+
+// Microsoft.Reporting.LocalRenderingExtensionInfo
+[Serializable]
+internal sealed class LocalRenderingExtensionInfo
+
+
+// Microsoft.ReportingServices.Rendering.ExcelRenderer.ExcelRenderer
+internal class ExcelRenderer 
+: Microsoft.ReportingServices.OnDemandReportRendering.IRenderingExtension, Microsoft.ReportingServices.Interfaces.IExtension

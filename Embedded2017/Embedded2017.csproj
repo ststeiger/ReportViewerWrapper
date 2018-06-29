@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3E0D6B0B-DDF7-44E7-9271-055E3FAC651E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Embedded2017</RootNamespace>
+    <AssemblyName>Embedded2017</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.Common.resources.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.DataVisualization.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.DataVisualization.resources.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.WebDesign.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.WebDesign.resources.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.WebForms.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.WebForms.resources.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.WinForms.resources.dll" />
+    <Content Include="Libs\ReportViewer\2017\Microsoft.SqlServer.Types.dll" />
+    <Content Include="Libs\ReportViewer\2017\source.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

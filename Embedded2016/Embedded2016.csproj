@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -101,6 +102,8 @@
     <Content Include="Libs\ReportViewer\2016\Microsoft.ReportViewer.WebForms.dll" />
     <Content Include="Libs\ReportViewer\2016\Microsoft.ReportViewer.WebForms.resources.dll" />
     <Content Include="Libs\ReportViewer\2016\Microsoft.SqlServer.Types.dll" />
+    <Content Include="SimpleControl.aspx" />
+    <Content Include="TestRender.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +123,20 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleControl.aspx.cs">
+      <DependentUpon>SimpleControl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SimpleControl.aspx.designer.cs">
+      <DependentUpon>SimpleControl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestRender.aspx.cs">
+      <DependentUpon>TestRender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestRender.aspx.designer.cs">
+      <DependentUpon>TestRender.aspx</DependentUpon>
+    </Compile>
     <Compile Include="TestReport3.cs" />
     <Compile Include="Umzugsmitteilung.cs" />
   </ItemGroup>
@@ -128,6 +145,7 @@
     <EmbeddedResource Include="UM_Umzugsmitteilung.rdl" />
     <EmbeddedResource Include="TestReport - Kopieren.rdl" />
     <EmbeddedResource Include="TestReport3.rdl" />
+    <EmbeddedResource Include="PaginationTest.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
