@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -7,10 +8,14 @@ using System.Web.UI.WebControls;
 
 namespace Embedded2017
 {
-    public partial class SimpleControl : System.Web.UI.Page
+
+
+    public partial class SimpleControl 
+        : System.Web.UI.Page
     {
 
-        public string RenderControlToHtml(Control controlToRender)
+
+        public string RenderControlToHtml(System.Web.UI.Control controlToRender)
         {
             string retValue = null;
 
@@ -19,6 +24,7 @@ namespace Embedded2017
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             using (System.IO.StringWriter stWriter = new System.IO.StringWriter(sb, System.Globalization.CultureInfo.InvariantCulture))
             {
+
                 using (System.Web.UI.HtmlTextWriter htmlWriter = new System.Web.UI.HtmlTextWriter(stWriter))
                 {
                     controlToRender.DataBind();
@@ -27,11 +33,13 @@ namespace Embedded2017
                     htmlWriter.Flush();
                     stWriter.Flush();
                     retValue = sb.ToString();
-                }
-            }
+                } // End Using htmlWriter 
+
+            } // End Using stWriter 
 
             return retValue;
-        }
+        } // End Function RenderControlToHtml 
+
 
         private static void EnableFormat(Microsoft.Reporting.WebForms.ReportViewer viewer, string formatName)
         {
@@ -87,7 +95,7 @@ namespace Embedded2017
                         m_isVisible.SetValue(extension, true);
                         m_isExposedExternally.SetValue(extension, true);
                         //break;
-                    }
+                    } // End if (string.Compare(thisFormat, formatName, true) == 0) 
 
                 } // Next extension
 
@@ -96,7 +104,7 @@ namespace Embedded2017
         } // End Sub EnableFormat 
 
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, System.EventArgs e)
         {
             if (this.Page.IsPostBack)
                 return;
@@ -117,7 +125,7 @@ namespace Embedded2017
             using (System.IO.Stream reportDefinition = COR_Reports.ReportRepository.GetEmbeddedReport("PaginationTest.rdl"))
             {
                 rs.LocalReport.LoadReportDefinition(reportDefinition);
-            }
+            } // End Using reportDefinition 
 
             rs.LocalReport.DataSources.Add(rds);
 
@@ -162,8 +170,10 @@ namespace Embedded2017
 
             string s = RenderControlToHtml(page);
             System.Console.WriteLine(s);
+        } // End Sub Page_Load 
 
 
-        }
-    }
-}
+    } // End Class SimpleControl 
+
+
+} // End Namespace Embedded2017 
