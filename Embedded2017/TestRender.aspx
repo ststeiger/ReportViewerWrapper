@@ -1,7 +1,6 @@
 ﻿<%@ Register Assembly="Microsoft.ReportViewer.WebForms"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
-
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TestRender.aspx.cs" Inherits="Embedded2016.TestRender" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TestRender.aspx.cs" Inherits="Embedded2017.TestRender" %>
 
 
 <!DOCTYPE html>

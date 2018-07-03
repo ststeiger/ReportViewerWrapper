@@ -1,12 +1,16 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Embedded2016
+
+namespace Embedded2017
 {
+
+
     public partial class TestRender : System.Web.UI.Page
     {
 
@@ -33,7 +37,7 @@ namespace Embedded2016
             }
 
 
-            
+
             this.rptViewer.LocalReport.DataSources.Add(rds);
             // this.rptViewer.DataBind();
 
@@ -45,7 +49,7 @@ namespace Embedded2016
             // rs.CurrentPage = 3;
             // int b = rs.LocalReport.GetTotalPages();
 
-            
+
 
         }
     }

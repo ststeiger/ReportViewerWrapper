@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SimpleControl.aspx.cs" Inherits="Embedded2016.SimpleControl" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SimpleControl.aspx.cs" Inherits="Embedded2017.SimpleControl" %>
 
 <!DOCTYPE html>
 

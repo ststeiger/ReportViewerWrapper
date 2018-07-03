@@ -7,7 +7,7 @@
 // </automatisch generiert>
 //------------------------------------------------------------------------------
 
-namespace Embedded2016 {
+namespace Embedded2017 {
     
     
     public partial class TestRender {
