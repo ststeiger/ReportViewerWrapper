@@ -13,8 +13,9 @@ namespace COR_Reports
        ,HtmlFragment
        ,Word
        ,WordOpenXml
+        , MHTML
 
-       ,Unknown = 666
+       , Unknown = 666
     } // End enum ExportFormat
 
 
@@ -63,6 +64,12 @@ namespace COR_Reports
                     this.Extension = ".pdf";
                     this.FormatName = "PDF";
                     this.Mime = "application/pdf";
+                    this.Format = pFormat;
+                    break;
+                case ExportFormat.MHTML:
+                    this.Extension = ".mht";
+                    this.FormatName = "MHTML";
+                    this.Mime = "text/html";
                     this.Format = pFormat;
                     break;
                 case ExportFormat.Html:

@@ -15,6 +15,21 @@ namespace Embedded2017
     {
 
 
+        public string RenderControlToHtml2(System.Web.UI.Page controlToRender)
+        {
+            string retValue = null;
+            controlToRender.Visible = true;
+
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            using (System.IO.StringWriter sw = new System.IO.StringWriter(sb, System.Globalization.CultureInfo.InvariantCulture))
+            {
+                HttpContext.Current.Server.Execute(controlToRender, sw, preserveForm: false);
+            } // End Using sw 
+            retValue = sb.ToString();
+            return retValue;
+        }
+
+
         public string RenderControlToHtml(System.Web.UI.Control controlToRender)
         {
             string retValue = null;
@@ -119,7 +134,7 @@ namespace Embedded2017
 
 
             Microsoft.Reporting.WebForms.ReportViewer rs = new Microsoft.Reporting.WebForms.ReportViewer();
-            EnableFormat(rs, "HTML4.0");
+            //EnableFormat(rs, "HTML4.0");
             EnableFormat(rs, "IMAGE");
 
             using (System.IO.Stream reportDefinition = COR_Reports.ReportRepository.GetEmbeddedReport("PaginationTest.rdl"))
@@ -138,6 +153,7 @@ namespace Embedded2017
 
 
             //COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.HtmlFragment);
+            //COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.MHTML);
             COR_Reports.ReportFormatInfo formatInfo = new COR_Reports.ReportFormatInfo(COR_Reports.ExportFormat.Image);
 
 
@@ -156,18 +172,24 @@ namespace Embedded2017
             System.Console.WriteLine(result);
 
 
+            //Page page = new Page();
             TestRender page = new TestRender();
-            /*
-            System.Web.UI.ScriptManager scriptManager = new ScriptManager();
-            Page page = new Page();
 
-            System.Web.UI.HtmlControls.HtmlForm form = new System.Web.UI.HtmlControls.HtmlForm();
-            form.Controls.Add(scriptManager);
-            form.Controls.Add(rs);
-            page.Controls.Add(form);
-            // page.DataBind();  //exception here 
-            */
+            //System.Web.UI.ScriptManager scriptManager = new ScriptManager();
+            
+            //System.Web.UI.HtmlControls.HtmlForm form = new System.Web.UI.HtmlControls.HtmlForm();
+            //form.Controls.Add(scriptManager);
+            //rs.AsyncRendering = false;
+            //form.Controls.Add(rs);
+            //page.Controls.Add(form);
 
+            //page.RenderControl
+
+
+            //// page.DataBind();  //exception here 
+
+
+            //// RenderControlToHtml2(page);
             string s = RenderControlToHtml(page);
             System.Console.WriteLine(s);
         } // End Sub Page_Load 

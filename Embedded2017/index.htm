@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <title>AJAX test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.00, minimum-scale=1.00, maximum-scale=1.00" />
+    <meta name="google" value="notranslate" />
+
+    <meta name="author" content="name" />
+    <meta name="description" content="description here"/>
+    <meta name="keywords" content="keywords,here"/>
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="style.css" />
+    <script src="AsyncAjax.js"></script>
+
+    <style type="text/css">
+
+        html, body
+        {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+
+    <!--  
+    <script type="module" src="GeneratedScripts/slick/main.js?v=1"></script>
+    -->
+</head>
+<body>
+    
+
+    <script type="text/javascript">
+        function saveData()
+        {
+            console.log("saveData");
+
+            var data = {
+                "test": "234"
+            };
+
+            
+
+            new Http.Json("../../ajax/anyInsert.ashx?sql=PL_T_VWS_PdfLegende_Insert.sql", JSON.stringify(data))
+                .success(
+                function (result)
+                {
+                    console.log("success", result);
+                    
+                })
+                .failure(function (err)
+                {
+                    console.log("PL_T_VWS_PdfLegende_Insert: failure");
+                    console.log(err);
+
+                    // console.clear();
+                    if (err.message)
+                    {
+                        console.log(err.message);
+                        console.log(JSON.stringify(err, null, 2));
+                    } // End if (err.message) 
+                })
+                .send();
+
+        } // End Function saveData
+
+        function postData()
+        {
+            new Http.Post("url", {},
+                function (r)
+                {
+                    console.log("success");
+                }
+            ).send();
+        }
+
+        function requestData()
+        {
+            new Http.Ajax({
+                url: "TestRender.aspx",
+                callbackName: "",
+                timeout: 100,
+
+                method: "GET",
+                contentType: "text/html",
+                queryData: {},
+                postData: {},
+                cache: false,
+
+                // user: "SELECT TOP 1 BE_ID FROM T_Benutzer;",
+                // password: "SELECT TOP 1 BE_Passwort FROM T_Benutzer;",
+
+                onSuccess: function (r)
+                {
+                    console.log("onSuccess");
+                    // console.log(r);
+
+                    // https://stackoverflow.com/questions/10585029/parse-an-html-string-with-js
+                    var parser = new DOMParser();
+                    var htmlDoc = parser.parseFromString(r, "text/html");
+                    console.log(htmlDoc);
+                    var body = htmlDoc.getElementsByTagName("body")[0];
+                    console.log(body);
+                    document.body.innerHTML = body.innerHTML;
+
+                },
+                onError: function (req)
+                {
+                    console.log("onError");
+                    console.log(req);
+                },
+                onNetworkError: function (req) { console.log(req); },
+                onCancel: function (req) { console.log(req); },
+                onAlways: function (req) { console.log(req); },
+                onProgress: function (e) { console.log(e); },
+                resultHook: function (r)
+                {
+                    console.log("resultHook");
+                    // console.log(r);
+                    return r;
+                }
+            }).send();
+        }
+
+
+        function getData()
+        {
+            console.log("saveData");
+
+            new Http.Get("url", { "data": "foo" },
+                function ()
+                {
+                    console.log("success");
+                }
+            ).send();
+        }
+
+
+        /*
+        // rptViewer_ctl09 class="MenuBarBkGnd ToolBarBackground"
+        document.getElementById("rptViewer_ctl09_ctl00_Next_ctl00").click()
+        document.getElementById("rptViewer_ctl09_ctl00_Previous_ctl00").click()
+
+        $find('rptViewer').exportReport('EXCELOPENXML');
+        $find('rptViewer').exportReport('PDF');
+        $find('rptViewer').exportReport('WORDOPENXML');
+        */
+
+        function autoRun(e)
+        {
+            console.log("autoRun");
+            // saveData();
+            // getData();
+            // postData();
+
+            requestData();
+        } // End Function autoRun
+
+
+
+        if (document.addEventListener) document.addEventListener("DOMContentLoaded", autoRun, false);
+        else if (document.attachEvent) document.attachEvent("onreadystatechange", autoRun);
+        else window.onload = autorun;
+
+        // if (window.addEventListener) window.addEventListener("load", autorun, false);
+        // else if (window.attachEvent) window.attachEvent("onload", autorun);
+        // else window.onload = autorun;
+    </script>
+
+</body>
+</html>

@@ -21,10 +21,10 @@
 
 </head>
 <body>
-    
+
     <form id="form1" runat="server" >
         <asp:ScriptManager enablepagemethods="true" runat="server"></asp:ScriptManager>              
-        <rsweb:ReportViewer ID="rptViewer" runat="server" CssClass="rpviewerparm" BackColor="#60759B" Width="100%" Height="100%" PageCountMode="Actual" />
+        <rsweb:ReportViewer ID="rptViewer" PageCountMode="Actual" AsyncRendering="false" CssClass="rpviewerparm" BackColor="#60759B" Width="100%" Height="100%" runat="server" />
     </form>
 
     <!--

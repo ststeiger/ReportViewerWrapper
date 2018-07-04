@@ -21,6 +21,10 @@ namespace Embedded2017
             if (this.Page.IsPostBack)
                 return;
 
+
+            // this.rptViewer.AsyncRendering = false;
+            this.rptViewer.PageNavigation += myPageNavigation;
+
             Microsoft.Reporting.WebForms.ReportDataSource rds = new Microsoft.Reporting.WebForms.ReportDataSource();
             rds.Name = "DataSet1"; //This refers to the dataset name in the RDLC file
             string strSQL = @"SELECT * FROM T_Benutzer";
@@ -38,13 +42,39 @@ namespace Embedded2017
             // this.rptViewer.DataBind();
 
             this.rptViewer.CurrentPage = 3;
+
+            //System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            //System.IO.StringWriter stringWriter = new System.IO.StringWriter(sb);
+            //HtmlTextWriter htw = new HtmlTextWriter(stringWriter);
+            
+            //this.rptViewer.RenderControl(htw);
+            //string foo = sb.ToString();
+            //System.Console.WriteLine(foo);
+            
+
+
+            // this.rptViewer.LocalReport.ListRenderingExtensions();
+            // this.rptViewer.LocalReport.Refresh();
+
             int a = this.rptViewer.LocalReport.GetTotalPages();
+
+
+            // https://stackoverflow.com/questions/10585029/parse-an-html-string-with-js
+
             System.Console.WriteLine(a);
+
+            Context.Response.Flush();
 
             // rs.CurrentPage = 3;
             // int b = rs.LocalReport.GetTotalPages();
         } // End Sub Page_Load 
 
+
+        void myPageNavigation(object sender, Microsoft.Reporting.WebForms.PageNavigationEventArgs e)
+        {
+            System.Console.WriteLine(e.NewPage);
+            //MessageBox.Show("CurrentPage will be" + e.NewPage);
+        }
 
     } // End Class TestRender 
 
