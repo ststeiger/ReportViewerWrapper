@@ -108,6 +108,7 @@
   <ItemGroup>
     <Content Include="Ajax.js" />
     <Content Include="AsyncAjax.js" />
+    <Content Include="fetch.js" />
     <Content Include="index.htm" />
     <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.Common.dll" />
     <Content Include="Libs\ReportViewer\2017\Microsoft.ReportViewer.Common.resources.dll" />
