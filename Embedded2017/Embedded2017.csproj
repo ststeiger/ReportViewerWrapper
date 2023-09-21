@@ -135,6 +135,8 @@
     <Compile Include="Code\ReportRepository.cs" />
     <Compile Include="Code\ReportTools.cs" />
     <Compile Include="Code\SQL.cs" />
+    <Compile Include="Code\SubReportExample\Group.cs" />
+    <Compile Include="Code\SubReportExample\Employee.cs" />
     <Compile Include="Code\WrapperClasses.cs" />
     <Compile Include="Code\XmlTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,6 +161,8 @@
   <ItemGroup>
     <EmbeddedResource Include="PaginationTest.rdl" />
     <Content Include="report.ashx" />
+    <Content Include="Code\SubReportExample\Report1.rdl" />
+    <Content Include="Code\SubReportExample\Report1_Subreport.rdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -166,6 +170,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
